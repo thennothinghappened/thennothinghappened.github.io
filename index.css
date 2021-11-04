@@ -1,0 +1,138 @@
+body {
+    background-color: #202020;
+    color: rgb(235, 235, 235);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    margin: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Top banner */
+
+#content_box {
+    text-align: center;
+    margin: 2em;
+}
+
+#big_bg {
+    padding: 160px;
+    background-image: url("./assets/background_slice.jpg");
+    background-size: cover;
+    background-position: center;
+
+    /* fallback */
+    background-color: #303030;
+}
+
+#big_bg_text {
+    color: white;
+    font-size: 4vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.25em;
+    filter: none;
+}
+
+/* Navigation bar */
+
+#nav_bar {
+    display: flex;
+    flex-direction: row;
+
+    font-size: 2em;
+
+    background-color: grey;
+}
+
+.nav_item {
+    transition: 300ms;
+
+    flex-grow: 1;
+    padding: 1.5vw;
+
+    background-color: rgb(124, 124, 124);
+    box-shadow: 0 1px black;
+
+    border-left: solid 1px;
+    border-right: solid 1px;
+}
+
+.nav_item:hover {
+    transition: 200ms;
+
+    background-color: rgb(255, 28, 28);
+    box-shadow: 0 6px rgb(32, 0, 0);
+}
+
+/* Page content */
+
+#page_content {
+    margin-top: 1em;
+
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.page_post {
+    background-color: rgb(56, 56, 56);
+    min-height: 300px;
+    min-width: 500px;
+    flex-basis: 40%;
+
+    
+
+    box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.page_post > p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.post_image {
+    border-radius: 4px;
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+
+    background-color: rgb(196, 196, 196);
+}
+
+.page_post > a > img:hover {
+    background-color: white;
+}
+
+/* Page footer */
+
+#page_footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+
+    background-color: rgb(56, 56, 56);
+
+    text-align: center;
+
+    border-top: 3px solid rgb(102, 102, 102);
+}
+
+
+#page_footer > h2 {
+    line-height: 0;
+}
+
+#footer_small {
+    color: grey;
+    font-size: 0.75em;
+}
