@@ -11,6 +11,9 @@ body {
 a {
     color: white;
     text-decoration: none;
+}
+
+p > a {
     font-weight: 600;
 }
 
@@ -94,19 +97,17 @@ a:hover {
     min-width: 45vw;
     flex-basis: 40%;
 
-    
-
     box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 750px) {
     .page_post {
         min-width: 80vw;
     }
 }
 
-.page_post > p {
+p {
     padding-left: 10px;
     padding-right: 10px;
 }
