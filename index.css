@@ -92,6 +92,7 @@ a:hover {
 /* Page content */
 
 #page_content {
+    text-align: center;
     margin-top: 1em;
 
     display: flex;
@@ -137,7 +138,7 @@ p {
 /* Page footer */
 
 #page_footer {
-    position: absolute; 
+    position: fixed; 
     bottom: 0;
     left: 25%;
     width: 50%;
