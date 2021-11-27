@@ -1,0 +1,56 @@
+{
+    "home": [
+        {
+            "title": "Welcome to the site!",
+            "desc": "Welcome to my website! (I swear, I've typed this message so many times now...) Unfortunately, my very old website was deleted thanks to my shenanigans with my advertisement-removing script. Oh well. Github pages provides a much better service anyway. As for my old-new site? Well if you remember, it did say under construction... It never did get finished, and I don't care anyway to be frank. It was a mess. \n\nAnyway, if you have any feedback for the site, feel free to direct it to me via <a href='https://discord.gg/5mexm3p7Tk'>my discord</a>!",
+            "imagesrc": "./assets/begin_message.png",
+            "bgcol": "#ffffff"
+        }
+    ],
+    "games": [
+        {
+            "title": "GameMaker Studio 2 (introduction)",
+            "desc": "Not gonna lie, GMS 2 is probably the best thing that I have decided to buy to date. I have got endless hours of enjoyment from this program, despite only having owned it for a short time.\n\nQuite honestly, I took a 'break' from programming for quite a while before getting this software, I really didn't feel like I was getting much out of it other than making small things to show to friends occasionally. That all changed when I got GMS 2, a little over a month as of writing. Since then, I've produced over 30 little projects just because of how fun it is to program for me.\n\nSurrounding this little info blurb you'll see some of my creations which were 'good enough' that I could bother to give them a HTML export. Have fun. (right now just slimeform but I swear I'll add more)",
+            "imagesrc": "https://coal.yoyogames.com/brand/GMS2_PrimaryLogo/Primary1/GMS2_Primary_DblLine_BlackTransparent.png"
+        },
+        {
+            "title": "Slimeform Infinity 2",
+            "desc": "This is definitely my most playable and feature-rich game. It is also the first one I made in the engine. This game has random level generation, a functional level editor which can save and load from files, and pretty nice feeling movement if I do say so. (also, music by Cratlemungus)\n\nI wanted to put a HTML5 browser link here but GameMaker wasn't cooperating (html5 in gm sucks) so instead please download. Some time lateron I intend to get it working, mainly it is just the level editor which isn't cooperating.",
+            "imagesrc": "./assets/slimeform_banner.png",
+            "url": "./slimeform/slimeform_0.3.7.zip",
+            "download": "true"
+        },
+        {
+            "title": "Super Bad Hexagon",
+            "desc": "Yesterday as of writing, I decided to embark on a quest to recreate Super Hexagon at least semi-faithfully, since the last time I checked, all of the versions of the game remade for browsers kinda suck, and after flash was EOL you can't play the original 'hexagon' anymore. Anyway, this is the result of a few hours work, I might add some more gameplay to it later, but for now, here it is. Have fun!\n\n(Flashing colours warning!)",
+            "imagesrc": "./assets/hexagon_banner.png",
+            "url": "./soup/index.html"
+        },
+        {
+            "title": "Deck of Hell",
+            "desc": "Deck of Hell is a game I worked on in December 2020 for a game jam. For the first (and only as of writing) I teamed up with some others to make this over the course of a weekend. It was quite fun to work on even if stressful, but overall I learnt a lot from the experience and it was definitely a positive thing to have done. The link will take you to the itch.io page for it, which has the credits for those who I worked with on the game. (Thanks!)\n\nThis is the only listed game here that was made in GM:S 1.4! It also contains a lot of bad code, but I think one day I'll fix it up and do it justice.",
+            "imagesrc": "https://img.itch.zone/aW1nLzQ3OTM1MTgucG5n/315x250%23c/pNOexH.png",
+            "url": "https://thennothing.itch.io/deck-of-hell"
+        }
+    ],
+    "youtube": [
+        {
+            "title": "My Youtube Channel",
+            "desc": "As is probably quite obvious, I have a youtube channel! Click the image above to head over there.\n\nI generally make game related videos, with some occasional shitposts as an excuse to mess around with video editing. Expect to see uploads anywhere from every few days, to once a year... I don't exactly have a commitment here.",
+            "imagesrc": "./assets/thennothing_pixel.png",
+            "bgcol": "#aadafa",
+            "url": "https://www.youtube.com/channel/UCHGcbHJFQanGUmdj-hXa4bw"
+        }
+    ],
+
+    
+    "scheme": {
+        "title": "",
+        "desc": "",
+        "imagesrc": "",
+        "bgcol": "",
+        "url": "",
+        "download": ""
+    }
+}
+

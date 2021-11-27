@@ -8,9 +8,10 @@
     <title>Home - thennothinghappened</title>
 
     <link rel="stylesheet" href="index.css">
+    <script defer type="text/javascript" src="./index.js"></script>
 </head>
 
-<body>
+<body onload="updatePage('home')">
     <div id="content_box">
         <!--
             Top banner
@@ -26,30 +27,14 @@
             Navigation bar
         -->
         <div id="nav_bar">
-            <a href="./index.html" class="nav_item">Home</a>
-            <a href="./games.html" class="nav_item">Games</a>
-            <a href="./youtube.html" class="nav_item">Youtube</a>
-            <!--<a href="./info.html" class="nav_item">About Me</a>-->
+            <a href="#" class="nav_item" onclick="updatePage('home')">Home</a>
+            <a href="#" class="nav_item" onclick="updatePage('games')">Games</a>
+            <a href="#" class="nav_item" onclick="updatePage('youtube')">Youtube</a>
         </div>
         <!--
             Page content
         -->
-        <div id="page_content">
-            <div class="page_post">
-                <img class="post_image" src="./assets/begin_message.png">
-                <h1>Welcome to the site!</h1>
-                <p>
-                    Welcome to my website! (I swear, I've typed this message so many times now...) Unfortunately, my very old website was deleted
-                    thanks to my shenanigans with my advertisement-removing script. Oh well. Github
-                    pages provides a much better service anyway. As for my old-new site? Well if you remember, it did
-                    say under construction... It never did get finished, and I don't care anyway to be frank. It was a mess.
-                </p>
-                <p>
-                    Anyway, if you have any feedback for the site, feel free to direct it to
-                    me via <a href="https://discord.gg/5mexm3p7Tk">my discord</a>!
-                </p>
-            </div>
-        </div>
+        <div id="page_content"></div>
         
     </div>
 
