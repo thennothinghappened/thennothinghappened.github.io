@@ -13,34 +13,34 @@
 
 <body onload="updatePage('home')">
     <div id="content_box">
-        <!--
-            Top banner
-        -->
         <div id="big_bg">
             <a href="#">
-                <span id="big_bg_text">
+                <div id="big_bg_text">
                     thennothinghappened
-                </span>
+                </div>
             </a>
         </div>
-        <!--
-            Navigation bar
-        -->
+
         <div id="nav_bar">
-            <a href="#" class="nav_item" onclick="updatePage('home')">Home</a>
-            <a href="#" class="nav_item" onclick="updatePage('games')">Games</a>
-            <a href="#" class="nav_item" onclick="updatePage('youtube')">Youtube</a>
+            <button class="nav_item" onclick="updatePage('home')">Home</a>
+            <button class="nav_item" onclick="updatePage('games')">Games</a>
+            <button class="nav_item" onclick="updatePage('youtube')">Youtube</a>
         </div>
-        <!--
-            Page content
-        -->
-        <div id="page_content"></div>
+
+        <div id="page_content">
+            <noscript>
+                <span>
+                    <h1>Unfortunately, it looks like you have javascript disabled.</h1>
+                    To view the page properly, please enable it! For now though, you can feel free to view my posts
+                    as raw JSON as an alternative.
+                    <br>
+                    <iframe src="./posts.json" style="background-color: white; width:80%"></iframe>
+                </span>
+            </noscript>
+        </div>
         
     </div>
 
-    <!--
-        Page footer
-    -->
     <div id="page_footer">
         <h2><a href="mailto:thennothinghappened@gmail.com">Contact Me</a></h2>
         <span id="footer_small">thennothinghappened 2021</span>

@@ -24,7 +24,7 @@ a:hover {
 /* Top banner */
 
 #content_box {
-    text-align: center;
+    
     margin: 2vw;
 }
 
@@ -34,14 +34,15 @@ a:hover {
     background-size: cover;
     background-position: center;
 
-    text-align: center;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 
     /* fallback */
     background-color: #303030;
 }
 
 #big_bg_text {
-    text-align: center;
     color: white;
     font-size: 4vw;
     background-color: rgba(0, 0, 0, 0.5);
@@ -56,6 +57,8 @@ a:hover {
     flex-direction: row;
 
     font-size: 2em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
 
     background-color: grey;
 }
@@ -64,17 +67,23 @@ a:hover {
     transition: 300ms;
 
     flex-grow: 1;
+    text-align: left;
     padding: 1.5vw;
 
     background-color: rgb(124, 124, 124);
+    color: white;
+    font-size: 2vw;
+
     box-shadow: 0 1px black;
 
+    border: 0;
     border-left: solid 1px;
     border-right: solid 1px;
 }
 
 .nav_item:hover {
-    transition: 200ms;
+    transition: 100ms;
+    font-size: 2.4vw;
 
     background-color: rgb(255, 28, 28);
     box-shadow: 0 6px rgb(32, 0, 0);
@@ -128,14 +137,17 @@ p {
 /* Page footer */
 
 #page_footer {
-    position: relative;
-    width: 100%;
+    position: absolute; 
+    bottom: 0;
+    left: 25%;
+    width: 50%;
 
     background-color: rgb(56, 56, 56);
 
     text-align: center;
 
-    border-top: 3px solid rgb(102, 102, 102);
+    border: 3px solid rgb(102, 102, 102);
+    border-bottom: 0;
 }
 
 
