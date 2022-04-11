@@ -1,0 +1,53 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --sidebar-bgcol: #505050;
+    --content-bgcol: #afafaf;
+}
+
+body {
+    margin: 0;
+}
+
+/* Modifiers */
+
+ul {
+    list-style-type: none;
+}
+
+/* General */
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+/* Containers */
+
+#container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar {
+    width: 300px;
+
+    background-color: var(--sidebar-bgcol);
+}
+
+#content {
+
+
+    background-color: var(--content-bgcol);
+}
+
+/* Misc. */
+
+#sidebar-info {
+    width: 100%;
+    height: 40px;
+}
