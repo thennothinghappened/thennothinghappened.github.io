@@ -7,20 +7,42 @@
     <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="populateList()">
     <div id="grid container">
         <div id="flex sidebar">
             <div id="sidebar-info">
                 <img src="./assets/logo.png"><br>
-                Thennothing's Website
+                thennothing's Website
             </div>
-            <ul id="">
-                <li>test</li>
-            </ul>
+            <ul id="sidebar-list"></ul>
         </div>
         <div id="content">
 
         </div>
     </div>
+
+    <script>
+        function populateList() {
+            const location = document.getElementById('sidebar-list');
+            const pages = [
+                {name: 'About', folder: 'about', pages: [['about', 'About']]}
+            ];
+
+            pages.forEach(p => {
+                location.innerHTML += `<li>${p.name}<ul>${p.pages.map(n => {
+                    return `<li><a href="#" onclick="loadPage('${p.folder}/${n[0]}')">${n[1]}</a></li>`;
+                })}</ul><li>`;
+            });
+        }
+
+        function loadPage(p) {
+            const location = document.getElementById('content');
+            const page = `./pages/${p}.html`;
+
+            fetch(page).then((response) => {return response.text()}).then((content) => {
+                location.innerHTML = content;
+            });
+        }
+    </script>
 </body>
 </html>
