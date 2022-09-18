@@ -48,6 +48,11 @@ main {
     min-height: calc(100vh - var(--footer-height) - var(--header-height));
 }
 
+main article {
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
 /* 
 Header
 */
