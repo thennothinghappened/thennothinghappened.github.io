@@ -30,8 +30,9 @@ ul.horizontal-list {
     list-style: none;
 }
 
-ul:horizontal-list li {
+ul.horizontal-list li {
     display: inline-block;
+    padding-right: 40px;
 }
 
 /*
@@ -42,18 +43,19 @@ main {
 }
 
 /* 
-Navigation 
+Header
 */
 
 header {
     margin-bottom: 80px;
 }
 
-nav {
+nav#header {
+    box-sizing: border-box;
     display: flex;
     position: fixed;
     width: 100%;
-    height: 40px;
+    height: 80px;
     padding: 20px;
     top: 0;
     background-color: var(--nav-bg-col);
@@ -102,11 +104,17 @@ Footer
 
 footer {
     background-color: var(--footer-bg-col);
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 20px;
-    line-height: 4px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+nav#footer {
+    display: flex;
+    width: 100%;
+    user-select: none;
 }
 
 #container {
@@ -118,11 +126,13 @@ footer {
 Buttons
 */
 .fancy-button {
-    padding: 8px;
-    color:white;
-    background-color: var(--button-bg-col);
+    user-select: none;
     margin: 8px;
+    padding: 8px;
     transition: 0.15s ease;
+
+    color: var(--nav-text-col);
+    background-color: var(--button-bg-col);
     border: 1px solid var(--button-border-col);
     border-radius: 4px;
 }
