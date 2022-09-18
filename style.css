@@ -1,0 +1,60 @@
+:root {
+    --bg-col: #202030;
+    --text-col: #ffefff;
+    --button-border-col: #2255ff;
+    --button-bg-col: #252535;
+    --nav-bg-col: #151525;
+    --nav-text-hover-col: #4444ff;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-col);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-col);
+}
+
+/* 
+Navigation 
+*/
+
+nav {
+    display: flex;
+    padding: 20px;
+    background-color: var(--nav-bg-col);
+    font-size: 20px;
+}
+
+.nav-element {
+    padding: 5px;
+    text-decoration: none;
+}
+
+.nav-element:hover {
+    color: var(--nav-hover-col);
+}
+
+#container {
+    display: flex;
+    padding: 20px;
+}
+
+.fancy-button {
+    padding: 8px;
+    color:white;
+    background-color: var(--button-bg-col);
+    margin: 8px;
+    transition: 0.15s ease;
+    border: 1px solid var(--box-border-col);
+    border-radius: 4px;
+}
+
+.fancy-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 2px 2px var(--box-border-col);
+}
+
+.fancy-button:active {
+    transform: scale(0.97);
+    transition: 0.08s ease;
+}
