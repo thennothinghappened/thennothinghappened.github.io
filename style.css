@@ -7,10 +7,12 @@
     --button-border-col: #2255ff;
     --button-bg-col: #252535;
 
+    --header-height: 80px;
     --nav-bg-col: #151525;
     --nav-text-hover-col: #5454aa;
     --nav-text-hover-shadow-col: #050505;
 
+    --footer-height: 38px;
     --footer-bg-col: #282840;
 }
 
@@ -19,6 +21,7 @@ body {
     background-color: var(--bg-col);
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text-col);
+    height: 100%;
 }
 
 a {
@@ -40,6 +43,9 @@ Content
 */
 
 main {
+    /* https://stackoverflow.com/a/65314674
+     * Get the footer to stick to the bottom */
+    min-height: calc(100vh - var(--footer-height) - var(--header-height));
 }
 
 /* 
@@ -47,7 +53,7 @@ Header
 */
 
 header {
-    margin-bottom: 80px;
+    margin-bottom: var(--header-height);
 }
 
 nav#header {
@@ -55,7 +61,7 @@ nav#header {
     display: flex;
     position: fixed;
     width: 100%;
-    height: 80px;
+    height: var(--header-height);
     padding: 20px;
     top: 0;
     background-color: var(--nav-bg-col);
@@ -104,8 +110,7 @@ Footer
 
 footer {
     background-color: var(--footer-bg-col);
-    position: absolute;
-    bottom: 0;
+    height: 38px;
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
