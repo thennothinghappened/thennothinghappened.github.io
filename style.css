@@ -101,13 +101,7 @@ body {
 }
 
 main {
-    display: grid;
-    grid-template-columns: 1fr;
 
-    overflow: hidden;
-}
-
-main > section {
     padding: 7.5vh 15vw;
     box-sizing: border-box;
     
@@ -118,12 +112,27 @@ main > section {
     grid-column-start: 1;
 
     overflow: hidden;
+
+    grid-template-columns: 1fr;
+
+    animation-name: main-fadein;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+
 }
 
-main > section.hidden {
+@keyframes main-fadein {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {}
+}
+
+main.fadeout {
     transform: scale(0.9);
     opacity: 0;
-    z-index: -99999999999;
 }
 
 address {
@@ -382,8 +391,14 @@ dialog {
     width: 70%;
 }
 
-dialog[open] {
-    animation: dialog-popin 0.3s ease;
+dialog.animate {
+    animation: dialog-popin ease;
+    animation-duration: 0.3s;
+}
+
+dialog.hidden {
+    animation-direction: reverse;
+    animation-duration: 0.2s;
 }
 
 dialog .card {
