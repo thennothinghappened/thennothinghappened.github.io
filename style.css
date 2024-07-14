@@ -300,6 +300,11 @@ a {
     font-size: var(--font-heading-size);
 }
 
+/* Show a clickable cursor on cards which have content but are not expanded. */
+:not(dialog) > .card:has(section.content) {
+	cursor: pointer;
+}
+
 .card .content {
     display: none;
 }
