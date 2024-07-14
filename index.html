@@ -12,21 +12,19 @@
 	<meta name="og:type" property="og:type" content="website">
 	<meta name="og:url" property="og:url" content="https://thennothinghappened.github.io/">
 
-	<script>
-		// Immediately enable dark mode so there's no white flash since we use modules now.
-		window.addEventListener('DOMContentLoaded', () => {
-			if (localStorage.getItem('dark') === 'true') {
-				document.body.classList.add('dark');
-			}
-		});
-	</script>
-
     <script type="module" src="/js/main.mjs"></script>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+	<script>
+		// Immediately enable dark mode so there's no white flash since we use modules now.
+		if (localStorage.getItem('dark') === 'true') {
+			document.body.classList.add('dark');
+		}
+	</script>
 
     <nav id="navbar">
         <div id="navbar-entries">
