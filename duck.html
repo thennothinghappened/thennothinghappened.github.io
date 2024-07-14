@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generic Website 01: Duck</title>
 
+	<script>
+		// Immediately enable dark mode so there's no white flash since we use modules now.
+		window.addEventListener('DOMContentLoaded', () => {
+			if (localStorage.getItem('dark') === 'true') {
+				document.body.classList.add('dark');
+			}
+		});
+	</script>
+
     <script type="module" src="/js/main.mjs"></script>
 
     <link rel="stylesheet" href="style.css">
