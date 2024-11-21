@@ -317,8 +317,11 @@ button.card {
 	border: none;
 }
 
-.card > h1 > img {
+.card > h1 > * {
 	vertical-align: middle;
+}
+
+.card > h1 > img {
 	height: var(--font-h1-size);
 }
 
