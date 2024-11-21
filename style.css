@@ -29,7 +29,7 @@
 
     /* Colours */
     --colour-background: white;
-    --colour-text-main: black;
+    --colour-text-main: rgb(60, 60, 60);
     --colour-text-light: #656565;
     --colour-text-link: var(--colour-text-light);
 
