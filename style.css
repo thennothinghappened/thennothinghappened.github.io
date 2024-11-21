@@ -52,11 +52,11 @@
     --colour-footer-background: var(--colour-card-light-background);
 
     /* Font */
-    --font-family: Arial, Helvetica, sans-serif;
+    --font-family: "Lato", sans-serif;
 
     --font-heading-size: max(6vh, 40px);
 
-    --font-h1-weight: 200;
+    --font-h1-weight: 600;
     --font-h1-size: max(3vh, 22px);
 
     --font-h2-weight: 500;
