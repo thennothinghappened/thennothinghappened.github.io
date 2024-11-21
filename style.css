@@ -11,6 +11,7 @@
     --radius-navbar-entry: 25px;
 
     --padding-footer: 6vh 6vw;
+	--padding-footer-contact-icon: 1em;
 
     --padding-card: 2.5vh 2.5vw;
     --padding-card-popup: 5vh 5vw;
@@ -359,10 +360,15 @@ footer {
     color: var(--colour-footer-font);
 }
 
-footer .fa {
-    font-size: var(--font-h1-size);
+#contact-methods li > a {
+	display: inline-flex;
+	align-items: center;
+	column-gap: var(--padding-footer-contact-icon);
 }
 
+#contact-methods .fa {
+    font-size: var(--font-h1-size);
+}
 
 /*      #endregion      */
 
