@@ -132,6 +132,10 @@ main {
 
 }
 
+code {
+	font-family: "Consolas", monospace, monospace;
+}
+
 @keyframes main-fadein {
 	0% {
 		transform: scale(0.9);
