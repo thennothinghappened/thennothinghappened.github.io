@@ -23,7 +23,9 @@
 
     /* Animations */
     --transition-card: 0.4s;
-    --translate-card-hover: 0 -1vh;
+	--translate-card-hover-x: 0vh;
+	--translate-card-hover-y: -1vh;
+    --translate-card-hover: var(--translate-card-hover-x) var(--translate-card-hover-y);
 
     /* Colours */
     --colour-background: white;
@@ -248,7 +250,7 @@ a {
     border-radius: var(--radius-card);
 
     transition-duration: var(--transition-card);
-    transition-property: translate;
+    transition-property: translate box-shadow;
 
     color: var(--colour-text-main);
 }
@@ -294,6 +296,7 @@ a {
 
 .card.animate:hover {
     translate: var(--translate-card-hover);
+	box-shadow: calc(var(--translate-card-hover-x) * -1) calc(var(--translate-card-hover-y) * -1) 15px var(--colour-card-dark-background);
 }
 
 .card.heading h1 {
