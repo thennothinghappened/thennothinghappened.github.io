@@ -25,80 +25,80 @@ export let cards;
 
 function init() {
 
-    /** @type { HTMLElement } */
-    const nav_entries = document.querySelector('#navbar-entries');
-    main = /** @type {HTMLDivElement} */ (document.querySelector('main'));
-    
-    cards = Array.from(/** @type {NodeListOf<HTMLDivElement>} */ (main.querySelectorAll('.card')))
-        .map((element) => {
+	/** @type { HTMLElement } */
+	const nav_entries = document.querySelector('#navbar-entries');
+	main = /** @type {HTMLDivElement} */ (document.querySelector('main'));
+	
+	cards = Array.from(/** @type {NodeListOf<HTMLDivElement>} */ (main.querySelectorAll('.card')))
+		.map((element) => {
 
-            const content = (element.querySelector('.content'));
+			const content = (element.querySelector('.content'));
 
-            if (!(content instanceof HTMLElement)) {
-                return null;
-            }
+			if (!(content instanceof HTMLElement)) {
+				return null;
+			}
 
-            const card = /** @type {ViewableCard} */ (element);
-            card.tabIndex = 0;
-            card.content = content;
+			const card = /** @type {ViewableCard} */ (element);
+			card.tabIndex = 0;
+			card.content = content;
 
-            card.addEventListener('click', () => {
-                dialog.view_card(card);
-            });
+			card.addEventListener('click', () => {
+				dialog.view_card(card);
+			});
 
-            card.addEventListener('keypress', key_enter_wrapper(() => {
-                dialog.view_card(card);
-            }));
+			card.addEventListener('keypress', key_enter_wrapper(() => {
+				dialog.view_card(card);
+			}));
 
-            return card;
+			return card;
 
-        })
-        .filter((card) => card !== null);
+		})
+		.filter((card) => card !== null);
 
-    if (page === 'home') {
+	if (page === 'home') {
 
-        const hello = document.getElementById('js-hello');
-        const hellooooo = (event) => {
-            hello.textContent += '!';
-        };
+		const hello = document.getElementById('js-hello');
+		const hellooooo = (event) => {
+			hello.textContent += '!';
+		};
 
-        hello.parentElement.addEventListener('click', hellooooo);
-        hello.parentElement.addEventListener('keypress', key_enter_wrapper(hellooooo));
+		hello.parentElement.addEventListener('click', hellooooo);
+		hello.parentElement.addEventListener('keypress', key_enter_wrapper(hellooooo));
 
-    }
+	}
 
-    theme.init();
-    dialog.init();
+	theme.init();
+	dialog.init();
 
-    for (const anchor of document.querySelectorAll('a')) {
-        
-        if (!(anchor instanceof HTMLAnchorElement)) {
-            continue;
-        }
+	for (const anchor of document.querySelectorAll('a')) {
+		
+		if (!(anchor instanceof HTMLAnchorElement)) {
+			continue;
+		}
 
-        if (anchor.href.startsWith('#')) {
-            continue;
-        }
+		if (anchor.href.startsWith('#')) {
+			continue;
+		}
 
-        anchor.addEventListener('click', () => {
+		anchor.addEventListener('click', () => {
 
-            main.classList.add('fadeout');
+			main.classList.add('fadeout');
 
-            if (new URL(anchor.href).origin === window.location.origin) {
-                nav_entries.scrollIntoView({ behavior: 'smooth' });
-                localStorage.setItem('scroll-back-in', (true).toString());
-            }
+			if (new URL(anchor.href).origin === window.location.origin) {
+				nav_entries.scrollIntoView({ behavior: 'smooth' });
+				localStorage.setItem('scroll-back-in', (true).toString());
+			}
 
-        });
+		});
 
-    }
+	}
 
-    if (localStorage.getItem('scroll-back-in') === 'true') {
+	if (localStorage.getItem('scroll-back-in') === 'true') {
 
-        localStorage.setItem('scroll-back-in', (false).toString());
-        main.scrollIntoView({ behavior: 'smooth' });
+		localStorage.setItem('scroll-back-in', (false).toString());
+		main.scrollIntoView({ behavior: 'smooth' });
 
-    }
+	}
 
 }
 
@@ -107,14 +107,14 @@ function init() {
  * @returns 
  */
 export function key_enter_wrapper(callback) {
-    /**
-     * @param {KeyboardEvent} event
-     */
-    return function(event) {
-        if (event.key === 'Enter') {
-            callback(event);
-        }
-    }
+	/**
+	 * @param {KeyboardEvent} event
+	 */
+	return function(event) {
+		if (event.key === 'Enter') {
+			callback(event);
+		}
+	}
 }
 
 /**
@@ -123,18 +123,18 @@ export function key_enter_wrapper(callback) {
  */
 function page_get_current() {
 
-    switch (window.location.pathname.split('/').pop()) {
-        case '': case 'index.html': return 'home';
-        case 'projects.html': return 'projects';
-        case 'duck.html': return 'duck';
-    }
+	switch (window.location.pathname.split('/').pop()) {
+		case '': case 'index.html': return 'home';
+		case 'projects.html': return 'projects';
+		case 'duck.html': return 'duck';
+	}
 
-    throw `Unexpected unknown page ${window.location.pathname}, oops.`;
+	throw `Unexpected unknown page ${window.location.pathname}, oops.`;
 
 }
 
 if (document.readyState === 'complete') {
-    init();
+	init();
 } else {
-    document.addEventListener('DOMContentLoaded', init);
+	document.addEventListener('DOMContentLoaded', init);
 }
