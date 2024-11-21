@@ -5,22 +5,22 @@
 
 :root {
 	/* Sizing */
-	--margin-navbar-entry: 2.4vh;
-	--padding-vertical-navbar-entry: 1.2vh;
+	--margin-navbar-entry: 1.2em;
+	--padding-vertical-navbar-entry: 0.6em;
 	--padding-horizontal-navbar-entry: 6vw;
-	--radius-navbar-entry: 25px;
+	--radius-navbar-entry: 1em;
 
-	--padding-footer: 6vh 6vw;
+	--padding-footer: 3em 2em;
 	--padding-footer-contact-icon: 1em;
 
-	--padding-card: 2.5vh 2.5vw;
-	--padding-card-popup: 5vh 5vw;
-	--radius-card: 35px;
+	--padding-card: 1.5em 1.5em;
+	--padding-card-popup: 1.5em;
+	--radius-card: 1.8em;
 
 	--margin-hr: 2em;
 	--width-hr: 90%;
 
-	--gap-grid: min(2.5vh, 2.5vw);
+	--gap-grid: min(1.5em, 3vw);
 
 	/* Animations */
 	--transition-card: 0.4s;
@@ -57,13 +57,13 @@
 	/* Font */
 	--font-family: "Lato", sans-serif;
 
-	--font-heading-size: max(6vh, 40px);
+	--font-heading-size: 4em;
 
 	--font-h1-weight: 600;
-	--font-h1-size: max(3vh, 22px);
+	--font-h1-size: 1.6em;
 
 	--font-h2-weight: 500;
-	--font-h2-size: max(2.5vh, 18px);
+	--font-h2-size: 1.5em;
 
 	/* Effects */
 	--backdrop-blur: blur(8px);
