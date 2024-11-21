@@ -58,12 +58,12 @@ function init() {
 	if (page === 'home') {
 
 		const hello = document.getElementById('js-hello');
-		const hellooooo = (event) => {
-			hello.textContent += '!';
-		};
 
-		hello.parentElement.addEventListener('click', hellooooo);
-		hello.parentElement.addEventListener('keypress', key_enter_wrapper(hellooooo));
+		function appendExclamation() {
+			hello.textContent += '!';
+		}
+
+		hello.parentElement.addEventListener('click', appendExclamation);
 
 	}
 
