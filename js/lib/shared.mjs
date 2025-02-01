@@ -5,7 +5,7 @@ const cardPopupManager = new CardPopupManager();
 
 export function initSharedContent() {
 
-	/** @type { HTMLElement } */
+	/** @type {HTMLElement} */
 	const navEntries = document.querySelector('#navbar-entries');
 
 	/** @type {HTMLElement} */
