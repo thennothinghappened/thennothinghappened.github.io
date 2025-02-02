@@ -3,44 +3,38 @@ import { CardPopupManager } from '/js/lib/CardPopupManager.mjs';
 
 const cardPopupManager = new CardPopupManager();
 
+/** @type {HTMLElement} */
+let main;
+
+/** @type {HTMLElement} */
+let navEntries;
+
 export function initSharedContent() {
 
-	/** @type {HTMLElement} */
-	const navEntries = document.querySelector('#navbar-entries');
+	main = document.querySelector('main');
+	navEntries = document.querySelector('#navbar-entries');
 
-	/** @type {HTMLElement} */
-	const main = document.querySelector('main');
+	window.addEventListener('beforeunload', () => animatePageHide());
+	window.addEventListener('pageshow', () => animatePageShow());
 	
 	cardPopupManager.init(main);
 	theme.init();
 
-	for (const anchor of document.querySelectorAll('a')) {
+	for (const anchor of document.querySelectorAll('a:not([href^="#"])')) {
 		
 		if (!(anchor instanceof HTMLAnchorElement)) {
 			continue;
 		}
 
-		if (anchor.href.startsWith('#')) {
+		if (new URL(anchor.href).origin !== window.location.origin) {
 			continue;
 		}
 
-		anchor.addEventListener('click', () => {
-
-			main.classList.add('fadeout');
-
-			if (new URL(anchor.href).origin === window.location.origin) {
-				navEntries.scrollIntoView({ behavior: 'smooth' });
-				localStorage.setItem('scroll-back-in', (true).toString());
-			}
-
-		});
+		anchor.addEventListener('click', () => animateSameSiteHide());
 
 	}
 
-	if (localStorage.getItem('scroll-back-in') === 'true') {
-		localStorage.setItem('scroll-back-in', (false).toString());
-		main.scrollIntoView({ behavior: 'smooth' });
-	}
+	animateSameSiteShow();
 
 }
 
@@ -56,5 +50,37 @@ export function key_enter_wrapper(callback) {
 		if (event.key === 'Enter') {
 			callback(event);
 		}
+	}
+}
+
+/**
+ * Fade out the page content on leaving the page.
+ */
+function animatePageHide() {
+	main.classList.add('fadeout');
+}
+
+/**
+ * Fade the content back in on showing a page.
+ */
+function animatePageShow() {
+	main.classList.remove('fadeout');
+}
+
+/**
+ * Begin the animation for switching to another in-site content tab.
+ */
+function animateSameSiteHide() {
+	navEntries.scrollIntoView({ behavior: 'smooth' });
+	localStorage.setItem('scroll-back-in', 'true');
+}
+
+/**
+ * Finish the tab-switch animation on the receiving side.
+ */
+function animateSameSiteShow() {
+	if (localStorage.getItem('scroll-back-in') === 'true') {
+		localStorage.setItem('scroll-back-in', 'false');
+		main.scrollIntoView({ behavior: 'smooth' });
 	}
 }
