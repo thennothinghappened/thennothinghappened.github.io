@@ -62,8 +62,13 @@ function animatePageHide() {
  * Fade the content back in on showing a page.
  */
 function animatePageShow() {
-	main.classList.remove('fadeout');
+	
+	if (main.classList.contains('fadeout')) {
+		main.classList.remove('fadeout');
+	}
+
 	animateSameSiteShow();
+	
 }
 
 /**
