@@ -34,8 +34,6 @@ export function initSharedContent() {
 
 	}
 
-	animateSameSiteShow();
-
 }
 
 /**
@@ -65,6 +63,7 @@ function animatePageHide() {
  */
 function animatePageShow() {
 	main.classList.remove('fadeout');
+	animateSameSiteShow();
 }
 
 /**
