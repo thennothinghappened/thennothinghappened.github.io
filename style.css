@@ -471,5 +471,10 @@ dialog .card .content {
 	display: block;
 }
 
+@media only screen and (min-width: 600px) {
+	dialog {
+		max-width: 100ch;
+	}
+}
 
 /*	  #endregion	  */
