@@ -1,0 +1,3 @@
+[submodule "win7site"]
+	path = win7site
+	url = https://github.com/thennothinghappened/win7site
