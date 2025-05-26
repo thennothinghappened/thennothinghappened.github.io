@@ -12,9 +12,11 @@
 	<meta name="og:type" property="og:type" content="website">
 	<meta name="og:url" property="og:url" content="https://thennothinghappened.github.io/">
 
-	<script type="module" src="/js/home.mjs"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/home.js"></script>
 
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/dark.css" media="(prefers-color-scheme: dark)">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,13 +25,6 @@
 
 </head>
 <body>
-
-	<script>
-		// Immediately enable dark mode so there's no white flash since we use modules now.
-		if (localStorage.getItem('dark') === 'true') {
-			document.body.classList.add('dark');
-		}
-	</script>
 
 	<nav id="navbar">
 		<div id="navbar-entries">
@@ -41,25 +36,10 @@
 
 	<main>
 		<div class="page-heading center">
-
-			<noscript>
-				<div class="card medium nojavascript">
-
-					<p>Hi, it looks like you have JavaScript disabled!</p>
-					
-					<p>This website uses JS to display its content,
-						so please make sure to turn that on :)</p>
-
-				</div>
-			</noscript>
-
-			<div class="card light heading animate" role="button">
-
+			<div class="card light heading" role="button">
 				<h1 id="js-hello">Hello!</h1>
 				<span class="blurb">Welcome to Generic Website 01!</span>
-	
 			</div>
-
 		</div>
 
 		<hr>
@@ -68,7 +48,7 @@
 
 			<div class="grid vertical">
 
-				<article class="card medium purple animate">
+				<article class="card medium purple">
 
 					<h1>Me!</h1>
 					<span class="blurb">Who am I anyway?</span>
@@ -103,7 +83,7 @@
 	
 				</article>
 	
-				<article class="card medium blue animate">
+				<article class="card medium blue">
 	
 					<h1>Hobbies!</h1>
 					<span class="blurb">Some of the stuff I like to do.</span>
@@ -132,14 +112,12 @@
 			</div>
 
 			<a href="/projects.html" class="card medium green animate">
-				<article>
-					<h1>Projects!</h1>
-					<p>
-						Actual contributions<b>*</b> to society!
-						<br>
-						<b>*:</b> <i>citation needed</i>
-					</p>
-				</article>
+				<h1>Projects!</h1>
+				<span class="blurb">
+					Actual contributions<b>*</b> to society!
+					<br>
+					<sup><b>*:</b> citation needed</sup>
+				</span>
 			</a>
 
 		</div>
@@ -162,7 +140,6 @@
 			</ul>
 			
 		</address>
-		<button id="js-darkmode" class="card medium">Use Dark Mode</button>
 	</footer>
 
 </body>
