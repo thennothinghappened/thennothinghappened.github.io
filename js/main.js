@@ -10,6 +10,8 @@ let themeManager;
 
 document.addEventListener('DOMContentLoaded', () => {
 
+	document.body.classList.add('popup-cards');
+
 	main = document.querySelector('main');
 	navEntries = document.querySelector('#navbar-entries');
 	
@@ -201,6 +203,7 @@ class CardPopupManager {
 			}
 			
 			card.tabIndex = 0;
+			card.classList.add('animate');
 
 			card.addEventListener('click', () => this.open(card));
 			card.addEventListener('keypress', (event) => {

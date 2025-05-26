@@ -91,7 +91,7 @@ body {
 
 main {
 
-	padding: 7.5vh 15vw;
+	padding: 7.5vh 20vw;
 	box-sizing: border-box;
 	
 	transition-property: opacity, transform;
@@ -100,8 +100,6 @@ main {
 	grid-row-start: 1;
 	grid-column-start: 1;
 
-	overflow: hidden;
-
 	grid-template-columns: 1fr;
 
 	animation-name: main-fadein;
@@ -109,6 +107,10 @@ main {
 	animation-iteration-count: 1;
 	animation-play-state: running;
 
+}
+
+body.popup-cards > main {
+	padding: 7.5vh 15vw;
 }
 
 code {
@@ -166,6 +168,12 @@ a {
 
 .grid > * {
 	flex-grow: 1;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+body.popup-cards .grid > * {
+	width: unset;
 }
 
 .grid.flow {
@@ -294,11 +302,11 @@ a {
 }
 
 /* Show a clickable cursor on cards which have content but are not expanded. */
-:not(dialog) > .card:has(section.content) {
+body.popup-cards :not(dialog) > .card:has(section.content) {
 	cursor: pointer;
 }
 
-.card .content {
+body.popup-cards .card .content {
 	display: none;
 }
 
@@ -317,7 +325,10 @@ button.card {
 .card h1 > img {
 	height: var(--font-h1-size);
 	filter: drop-shadow(var(--shadow-dist-card-title-x) var(--shadow-dist-card-title-y) var(--shadow-blur-card-title) var(--colour-card-shadow));
-	
+}
+
+.card > .blurb {
+	font-style: italic;
 }
 
 .card a {
@@ -338,18 +349,6 @@ button.card {
 /************************/
 /*		Misc.		 */
 /* #region **************/
-
-.nojavascript {
-	position: fixed;
-	z-index: 999;
-	bottom: 20px;
-	left: 50%;
-	transform: translate(-50%, 0);
-
-	background-color: rgba(200, 200, 200, 0.1) !important;
-
-	backdrop-filter: var(--backdrop-blur);
-}
 
 ul.nodecor {
 	list-style-type: none;
@@ -442,8 +441,14 @@ dialog > .card > h1 {
 	font-size: var(--font-dialog-h1-size);
 }
 
-dialog .card .content {
+body.popup-cards dialog .card .content {
 	display: block;
+}
+
+@media only screen and (max-width: 800px) {
+	main {
+		padding: 7.5vh 5vw;
+	}
 }
 
 @media only screen and (min-width: 600px) {
