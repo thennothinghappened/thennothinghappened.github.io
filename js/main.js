@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * Fade out the page content on leaving the page.
  */
 function animatePageHide() {
-	main.classList.add('fadeout');
+	if (useCosmeticAnimations()) {
+		main.classList.add('fadeout');
+	}
 }
 
 /**
@@ -59,8 +61,10 @@ function animatePageShow() {
  * Begin the animation for switching to another in-site content tab.
  */
 function animateSameSiteHide() {
-	navEntries.scrollIntoView({ behavior: 'smooth' });
-	window.localStorage.scrollBackIn = 'true';
+	if (useCosmeticAnimations()) {
+		navEntries.scrollIntoView({ behavior: 'smooth' });
+		window.localStorage.scrollBackIn = 'true';
+	}
 }
 
 /**
@@ -69,8 +73,19 @@ function animateSameSiteHide() {
 function animateSameSiteShow() {
 	if (window.localStorage.scrollBackIn === 'true') {
 		delete window.localStorage.scrollBackIn;
-		main.scrollIntoView({ behavior: 'smooth' });
+
+		if (useCosmeticAnimations()) {
+			main.scrollIntoView({ behavior: 'smooth' });
+		}
 	}
+}
+
+/**
+ * Whether we should use cosmetic transition animations. The user may opt for reduced motion, which
+ * disables these.
+ */
+function useCosmeticAnimations() {
+	return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 class ThemeManager {
@@ -153,11 +168,17 @@ class CardPopupManager {
 
 	dialog = document.createElement('dialog');
 
+	/**
+	 * @private
+	 * @type {DialogState}
+	 */
+	state = 'closed';
+
 	constructor() {
 
 		this.dialog.addEventListener('click', (event) => {
 			if (event.target === this.dialog) {
-				this.dismiss();
+				this.close();
 			}
 		});
 	
@@ -165,9 +186,10 @@ class CardPopupManager {
 	
 			this.dialog.classList.remove('animate');
 		
-			if (this.dialog.classList.contains('hidden')) {
-				this.dialog.classList.remove('hidden');
-				this.dialog.close();
+			if (this.state === 'opening') {
+				this.state = 'open';
+			} else {
+				this.destroyDialog();
 			}
 		
 		});
@@ -180,10 +202,10 @@ class CardPopupManager {
 			
 			card.tabIndex = 0;
 
-			card.addEventListener('click', () => this.show(card));
+			card.addEventListener('click', () => this.open(card));
 			card.addEventListener('keypress', (event) => {
 				if (event.key === 'Enter') {
-					this.show(card);
+					this.open(card);
 				}
 			});
 
@@ -195,7 +217,13 @@ class CardPopupManager {
 	 * View the given card's content as a pop-up.
 	 * @param {HTMLElement} card 
 	 */
-	show(card) {
+	open(card) {
+
+		if (this.state !== 'closed') {
+			this.destroyDialog();
+		}
+
+		this.state = 'opening';
 
 		const cardClone = card.cloneNode(false);
 
@@ -205,19 +233,40 @@ class CardPopupManager {
 		cardClone.appendChild(title);
 		cardClone.appendChild(content);
 	
-		this.dialog.textContent = '';
 		this.dialog.appendChild(cardClone);
-	
 		this.dialog.showModal();
-		this.dialog.classList.add('animate');
+
+		if (useCosmeticAnimations()) {
+			this.dialog.classList.add('animate');
+		} else {
+			this.state = 'open';
+		}
 
 	}
 	
 	/**
 	 * Dismiss the current card.
 	 */
-	dismiss() {
-		this.dialog.classList.add('animate', 'hidden');
+	close() {
+		if (useCosmeticAnimations()) {
+			this.state = 'closing';
+			this.dialog.classList.add('animate', 'hidden');
+		} else {
+			this.destroyDialog();
+		}
+	}
+
+	/**
+	 * @private
+	 */
+	destroyDialog() {
+		
+		this.dialog.close();
+		this.dialog.classList.remove('animate', 'hidden');
+		this.dialog.textContent = '';
+
+		this.state = 'closed';
+
 	}
 
 }

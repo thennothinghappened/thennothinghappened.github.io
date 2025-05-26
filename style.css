@@ -30,6 +30,10 @@
 
 	--transition-link-hover: 0.2s;
 
+	--dialog-popin-begin-scale: 0.6;
+	--dialog-popin-show-duration: 0.3s;
+	--dialog-popin-hide-duration: 0.2s;
+
 	/* Colours */
 	--colour-background: white;
 	--colour-text-main: rgb(107, 107, 107);
@@ -74,8 +78,6 @@
 	--shadow-dist-card-title-x: 0.05em;
 	--shadow-dist-card-title-y: 0.05em;
 	--shadow-blur-card-title: 0.05em;
-
-	transition: 2s;
 }
 
 body {
@@ -239,7 +241,7 @@ a {
 	border-radius: var(--radius-card);
 
 	transition-duration: var(--transition-card);
-	transition-property: translate box-shadow;
+	transition-property: translate, box-shadow;
 
 	color: var(--colour-text-main);
 }
@@ -398,7 +400,7 @@ footer {
 /* #region **************/
 
 @keyframes dialog-popin {
-	0% { scale: 0.6; opacity: 0; }
+	0% { scale: var(--dialog-popin-begin-scale); opacity: 0; }
 	100% { scale: 1; opacity: 1; }
 }
 
@@ -416,12 +418,12 @@ dialog {
 
 dialog.animate {
 	animation: dialog-popin ease;
-	animation-duration: 0.3s;
+	animation-duration: var(--dialog-popin-show-duration);
 }
 
 dialog.hidden {
 	animation-direction: reverse;
-	animation-duration: 0.2s;
+	animation-duration: var(--dialog-popin-hide-duration);
 }
 
 dialog .card {
@@ -451,3 +453,16 @@ dialog .card .content {
 }
 
 /*	  #endregion	  */
+
+/* Disable some animations if the user prefers :) */
+@media screen and (prefers-reduced-motion: reduce) {
+	
+	main {
+		animation: none;
+	}
+
+	.card.animate:hover {
+		translate: none;
+	}
+	
+}
