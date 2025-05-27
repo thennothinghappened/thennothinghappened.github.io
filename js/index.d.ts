@@ -15,7 +15,6 @@ export declare global {
 
 	type DialogState =
 		'closed'	|
-		'opening'	|
 		'open'		|
 		'closing'	;
 

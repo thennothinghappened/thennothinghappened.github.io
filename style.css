@@ -306,7 +306,7 @@ body.popup-cards .grid > * {
 }
 
 /* Show a clickable cursor on cards which have content but are not expanded. */
-body.popup-cards :not(dialog) > .card:has(section.content) {
+body.popup-cards :not(dialog) > .card:has(> section.content) {
 	cursor: pointer;
 }
 
@@ -318,24 +318,46 @@ button.card {
 	border: none;
 }
 
-.card h1 {
+.card > header {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5em;
+	margin-bottom: 0.5em;
+
 	text-shadow: var(--shadow-dist-card-title-x) var(--shadow-dist-card-title-y) var(--shadow-blur-card-title) var(--colour-card-shadow);
 }
 
-.card h1 > * {
-	vertical-align: middle;
+.card > header > h1 {
+	flex-grow: 1;
+	margin: 0;
 }
 
-.card h1 > img {
+.card > header > img {
 	height: var(--font-h1-size);
 	filter: drop-shadow(var(--shadow-dist-card-title-x) var(--shadow-dist-card-title-y) var(--shadow-blur-card-title) var(--colour-card-shadow));
+}
+
+.card > header > a {
+	transition-duration: 0.1s;
+	transition-timing-function: ease;
+	transition-property: transform;
+}
+
+.card > header > a:hover {
+	transform: scale(1.2);
 }
 
 .card > .blurb {
 	font-style: italic;
 }
 
-.card a {
+.card > .blurb em {
+	font-weight: bold;
+}
+
+.card > .content a {
 
 	transition: var(--transition-link-hover);
 	transition-property: box-shadow;
@@ -344,7 +366,7 @@ button.card {
 
 }
 
-.card a:hover {
+.card > .content a:hover {
 	box-shadow: 0 0.1em var(--colour-text-link);
 }
 
@@ -429,7 +451,7 @@ dialog.hidden {
 	animation-duration: var(--dialog-popin-hide-duration);
 }
 
-dialog .card {
+dialog > .card {
 	--translate-card-hover: none;
 	--padding-card: var(--padding-card-popup);
 
@@ -441,17 +463,17 @@ dialog::backdrop {
 	backdrop-filter: blur(2px);
 }
 
-dialog > .card > h1 {
+dialog > .card > header > * {
 	font-size: var(--font-dialog-h1-size);
 }
 
-body.popup-cards dialog .card .content {
+body.popup-cards dialog > .card > section.content {
 	display: block;
 }
 
 @media only screen and (max-width: 800px) {
-	main {
-		padding: 7.5vh 5vw;
+	main, body.popup-cards > main {
+		padding: 7.5vh 5vw !important;
 	}
 }
 
@@ -472,6 +494,10 @@ body.popup-cards dialog .card .content {
 
 	.card.animate:hover {
 		translate: none;
+	}
+
+	.card > header > a {
+		transition: none;
 	}
 	
 }

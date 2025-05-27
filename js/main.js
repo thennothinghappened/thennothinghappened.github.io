@@ -185,18 +185,25 @@ class CardPopupManager {
 		});
 	
 		this.dialog.addEventListener('animationend', () => {
-	
+			
 			this.dialog.classList.remove('animate');
-		
-			if (this.state === 'opening') {
-				this.state = 'open';
-			} else {
-				this.destroyDialog();
+
+			if (this.state === 'closing') {
+				this.dialog.close();
 			}
-		
+			
 		});
 
-		for (const card of main.querySelectorAll('.card:has(> .content):has(> h1)')) {
+		this.dialog.addEventListener('close', () => {
+
+			this.dialog.classList.remove('animate', 'hidden');
+			this.dialog.textContent = '';
+
+			this.state = 'closed';
+
+		});
+
+		for (const card of main.querySelectorAll('.card:has(> section.content)')) {
 
 			if (!(card instanceof HTMLElement)) {
 				continue;
@@ -223,26 +230,17 @@ class CardPopupManager {
 	open(card) {
 
 		if (this.state !== 'closed') {
-			this.destroyDialog();
+			this.close();
 		}
 
-		this.state = 'opening';
+		this.state = 'open';
 
-		const cardClone = card.cloneNode(false);
-
-		const title = card.querySelector('h1').cloneNode(true);
-		const content = card.querySelector('.content').cloneNode(true);
-	
-		cardClone.appendChild(title);
-		cardClone.appendChild(content);
-	
+		const cardClone = card.cloneNode(true);
 		this.dialog.appendChild(cardClone);
 		this.dialog.showModal();
 
 		if (useCosmeticAnimations()) {
 			this.dialog.classList.add('animate');
-		} else {
-			this.state = 'open';
 		}
 
 	}
@@ -251,25 +249,12 @@ class CardPopupManager {
 	 * Dismiss the current card.
 	 */
 	close() {
-		if (useCosmeticAnimations()) {
+		if (useCosmeticAnimations() && this.state === 'open') {
 			this.state = 'closing';
 			this.dialog.classList.add('animate', 'hidden');
 		} else {
-			this.destroyDialog();
+			this.dialog.close();
 		}
-	}
-
-	/**
-	 * @private
-	 */
-	destroyDialog() {
-		
-		this.dialog.close();
-		this.dialog.classList.remove('animate', 'hidden');
-		this.dialog.textContent = '';
-
-		this.state = 'closed';
-
 	}
 
 }
