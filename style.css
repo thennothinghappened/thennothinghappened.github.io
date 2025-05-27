@@ -315,7 +315,7 @@ body.popup-cards .card > .content {
 	display: none;
 }
 
-.card > .content img {
+.card > .content img, .card > .content iframe {
 	max-width: 100%;
 }
 

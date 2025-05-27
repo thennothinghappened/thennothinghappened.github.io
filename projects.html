@@ -360,7 +360,28 @@
 					</span>
 
 					<section class="content">
-						<img src="/media/gml-hlgui-demo.gif" alt="Demonstration of the example project included with the library." loading="lazy">
+
+						<!-- Conditionally show the interactive content if JS is enabled. -->
+						<iframe
+							hidden
+							src="/demos/gml-hlgui/index.html"
+							loading="lazy" 
+							frameborder="0"
+							width="800"
+							height="600">
+						</iframe>
+
+						<script>
+							document.currentScript.parentElement.querySelector('iframe').hidden = false;
+						</script>
+
+						<noscript>
+							<img
+								src="/media/gml-hlgui-demo.gif" 
+								alt="Demonstration of the example project included with the library." 
+								loading="lazy">
+						</noscript>
+
 					</section>
 				</article>
 
