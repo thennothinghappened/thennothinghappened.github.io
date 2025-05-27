@@ -249,6 +249,7 @@ body.popup-cards .grid > * {
 
 	display: block;
 	padding: var(--padding-card);
+	margin: 0;
 
 	border-radius: var(--radius-card);
 
@@ -416,7 +417,6 @@ footer {
 .card.heading {
 	width: 100%;
 }
-
 
 /*	  #endregion	  */
 
