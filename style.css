@@ -311,8 +311,12 @@ body.popup-cards :not(dialog) > .card:has(> section.content) {
 	cursor: pointer;
 }
 
-body.popup-cards .card .content {
+body.popup-cards .card > .content {
 	display: none;
+}
+
+.card > .content img {
+	max-width: 100%;
 }
 
 button.card {
