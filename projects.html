@@ -358,27 +358,33 @@
 					</p>
 
 					<div class="content">
-						<!-- Conditionally show the interactive content if JS is enabled. -->
-						<iframe
-							hidden
-							src="/demos/gml-hlgui/index.html"
-							loading="lazy" 
-							width="800"
-							height="600"
-							style="border: none;">
-						</iframe>
+						<!-- Interactive demo. -->
+						<figure hidden>
+							<iframe
+								src="/demos/gml-hlgui/index.html"
+								loading="lazy" 
+								width="800"
+								height="600"
+								style="border: none;">
+							</iframe>
+							<figcaption>Interactive demonstration - give it a try!</figcaption>
+						</figure>
 
-						<script>
-							document.currentScript.parentElement.querySelector('iframe').hidden = false;
-						</script>
-
-						<noscript>
+						<!-- Fallback video. -->
+						<figure>
 							<img
 								src="/media/gml-hlgui-demo.gif" 
 								alt="Demonstration of the example project included with the library." 
 								loading="lazy">
-						</noscript>
+							<figcaption>Example UI using the library (lizard sold separately)</figcaption>
+						</figure>
 
+						<!-- If we have JS, we'll swap for the interactive version. -->
+						<script>
+							document.currentScript.parentElement.querySelectorAll('figure').forEach(figure => {
+								figure.hidden = !figure.hidden;
+							});
+						</script>
 					</div>
 				</article>
 
