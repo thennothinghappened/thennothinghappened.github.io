@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('beforeunload', animatePageHide);
 	window.addEventListener('pageshow', animatePageShow);
 
-	for (const anchor of document.querySelectorAll('a:not([href^="#"])')) {
+	for (const anchor of document.querySelectorAll('main a:not([href^="#"])')) {
 		
 		if (!(anchor instanceof HTMLAnchorElement)) {
 			continue;
