@@ -18,7 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	const footer = document.querySelector('footer');
 	themeManager = new ThemeManager();
 
-	footer.appendChild(themeManager.selector);
+	const settingsHeading = document.createElement('h2');
+	settingsHeading.textContent = 'Display Settings';
+	footer.appendChild(settingsHeading);
+
+	const settingsBody = document.createElement('ul');
+	settingsBody.id = 'display-settings';
+
+	const themeSelectorLabel = document.createElement('label');
+	themeSelectorLabel.textContent = 'Theme: ';
+	themeSelectorLabel.appendChild(themeManager.selector);
+	settingsBody.appendChild(themeSelectorLabel);
+
+	footer.appendChild(settingsBody);
 
 	const cardPopupManager = new CardPopupManager();
 	main.appendChild(cardPopupManager.dialog);
@@ -113,7 +125,7 @@ class ThemeManager {
 		for (const theme of ['System', 'Light', 'Dark']) {
 
 			const option = document.createElement('option');
-			option.textContent = `${theme} Theme`;
+			option.textContent = theme;
 			option.value = theme;
 
 			this.selector.add(option);
