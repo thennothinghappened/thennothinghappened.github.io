@@ -307,7 +307,7 @@ body.popup-cards .grid > * {
 }
 
 /* Show a clickable cursor on cards which have content but are not expanded. */
-body.popup-cards :not(dialog) > .card:has(> section.content) {
+body.popup-cards :not(dialog) > .card:has(> .content) {
 	cursor: pointer;
 }
 
@@ -471,7 +471,7 @@ dialog > .card > header > * {
 	font-size: var(--font-dialog-h1-size);
 }
 
-body.popup-cards dialog > .card > section.content {
+body.popup-cards dialog > .card > .content {
 	display: block;
 }
 

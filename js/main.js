@@ -203,7 +203,7 @@ class CardPopupManager {
 
 		});
 
-		for (const card of main.querySelectorAll('.card:has(> section.content)')) {
+		for (const card of main.querySelectorAll('.card:has(> .content)')) {
 
 			if (!(card instanceof HTMLElement)) {
 				continue;
