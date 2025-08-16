@@ -334,7 +334,7 @@ button.card {
 	text-shadow: var(--shadow-dist-card-title-x) var(--shadow-dist-card-title-y) var(--shadow-blur-card-title) var(--colour-card-shadow);
 }
 
-.card > header > h1 {
+.card > header > h2 {
 	flex-grow: 1;
 	margin: 0;
 }
