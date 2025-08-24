@@ -10,6 +10,7 @@ export declare global {
 		localStorage: Storage & {
 			theme: Theme | undefined;
 			scrollBackIn: 'true' | undefined;
+			usePopupCards?: 'true' | 'false';
 		};
 	};
 

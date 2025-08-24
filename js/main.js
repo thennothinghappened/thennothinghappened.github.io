@@ -8,15 +8,18 @@ let navEntries;
 /** @type {ThemeManager} */
 let themeManager;
 
-document.addEventListener('DOMContentLoaded', () => {
+/** @type {CardPopupManager} */
+let cardPopupManager;
 
-	document.body.classList.add('popup-cards');
+document.addEventListener('DOMContentLoaded', () => {
 
 	main = document.querySelector('main');
 	navEntries = document.querySelector('#navbar-entries');
 	
 	const footer = document.querySelector('footer');
 	themeManager = new ThemeManager();
+
+	cardPopupManager = new CardPopupManager(main);
 
 	const settingsHeading = document.createElement('h2');
 	settingsHeading.textContent = 'Display Settings';
@@ -25,15 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	const settingsBody = document.createElement('ul');
 	settingsBody.id = 'display-settings';
 
-	const themeSelectorLabel = document.createElement('label');
+	const themeSelectorLabel = document.createElement('li');
 	themeSelectorLabel.textContent = 'Theme: ';
 	themeSelectorLabel.appendChild(themeManager.selector);
 	settingsBody.appendChild(themeSelectorLabel);
 
+	const usePopupCardsLabel = document.createElement('li');
+	usePopupCardsLabel.textContent = 'Display cards as pop-ups: ';
+	const usePopUpCardsInput = document.createElement('input');
+	usePopUpCardsInput.type = 'checkbox';
+	usePopUpCardsInput.checked = usePopupCards();
+
+	usePopUpCardsInput.addEventListener('change', () =>
+		togglePopupCards(usePopUpCardsInput.checked, true)
+	);
+
+	usePopupCardsLabel.appendChild(usePopUpCardsInput);
+	settingsBody.appendChild(usePopupCardsLabel);
+
 	footer.appendChild(settingsBody);
 
-	const cardPopupManager = new CardPopupManager();
-	main.appendChild(cardPopupManager.dialog);
+	togglePopupCards(usePopupCards(), false);
 
 	window.addEventListener('beforeunload', animatePageHide);
 	window.addEventListener('pageshow', animatePageShow);
@@ -100,6 +115,38 @@ function animateSameSiteShow() {
  */
 function useCosmeticAnimations() {
 	return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/**
+ * Whether to show cards as pop-ups, or just display articles as-is.
+ */
+function usePopupCards() {
+	return window.localStorage.usePopupCards !== 'false';
+}
+
+/**
+ * Toggle whether the pop-up cards are enabled.
+ * TODO: refactor these preferences, this kinda sucks!
+ * 
+ * @param {boolean} enabled Whether the pop-ups are enabled.
+ * @param {boolean} updatePreference Whether to update the value of the preference.
+ */
+function togglePopupCards(enabled, updatePreference) {
+	if (enabled) {
+		if (updatePreference) {
+			window.localStorage.usePopupCards = 'true';
+		}
+
+		cardPopupManager.enable(main);
+		document.body.classList.add('popup-cards');
+	} else {
+		if (updatePreference) {
+			window.localStorage.usePopupCards = 'false';
+		}
+
+		cardPopupManager.disable();
+		document.body.classList.remove('popup-cards');
+	}
 }
 
 class ThemeManager {
@@ -180,16 +227,28 @@ class ThemeManager {
  */
 class CardPopupManager {
 
+	/**
+	 * @private
+	 */
 	dialog = document.createElement('dialog');
+
+	/**
+	 * @private
+	 * @type {HTMLElement[]}
+	 */
+	cards = [];
 
 	/**
 	 * @private
 	 * @type {DialogState}
 	 */
-	state = 'closed';
+	dialogState = 'closed';
 
-	constructor() {
-
+	/**
+	 * 
+	 * @param {HTMLElement} cardsContainer Container element where cards can be found.
+	 */
+	constructor(cardsContainer) {
 		this.dialog.addEventListener('click', (event) => {
 			if (event.target === this.dialog) {
 				this.close();
@@ -200,7 +259,7 @@ class CardPopupManager {
 			
 			this.dialog.classList.remove('animate');
 
-			if (this.state === 'closing') {
+			if (this.dialogState === 'closing') {
 				this.dialog.close();
 			}
 			
@@ -211,28 +270,60 @@ class CardPopupManager {
 			this.dialog.classList.remove('animate', 'hidden');
 			this.dialog.textContent = '';
 
-			this.state = 'closed';
+			this.dialogState = 'closed';
 
 		});
 
-		for (const card of main.querySelectorAll('.card:has(> .content)')) {
+		this.cards = Array.from(cardsContainer.querySelectorAll('.card:has(> .content)'));
+	}
 
-			if (!(card instanceof HTMLElement)) {
-				continue;
+	/**
+	 * Enable the pop-up functionality.
+	 * @param {HTMLElement} dialogParent Parent element for the dialog.
+	 */
+	enable(dialogParent) {
+		if (this.isEnabled()) {
+			if (this.dialog.parentElement === dialogParent) {
+				return;
 			}
-			
-			card.tabIndex = 0;
-			card.classList.add('animate');
 
-			card.addEventListener('click', () => this.open(card));
-			card.addEventListener('keypress', (event) => {
-				if (event.key === 'Enter') {
-					this.open(card);
-				}
-			});
-
+			this.disable();
 		}
 
+		this.cards.forEach(card => {
+			card.tabIndex = 0;
+			card.classList.add('animate');
+			card.addEventListener('click', this.cardOnClick);
+			card.addEventListener('keypress', this.cardOnKeypress);
+		});
+
+		dialogParent.appendChild(this.dialog);
+	}
+
+	/**
+	 * Remove the pop-up functionality, restores regular card behaviour.
+	 */
+	disable() {
+		if (!this.isEnabled()) {
+			return;
+		}
+
+		this.cards.forEach(card => {
+			card.tabIndex = undefined;
+			card.classList.remove('animate');
+			card.removeEventListener('click', this.cardOnClick);
+			card.removeEventListener('keypress', this.cardOnKeypress);
+		});
+
+		this.dialog.remove();
+	}
+
+	/**
+	 * Check whether pop-ups are enabled.
+	 * @returns {boolean}
+	 */
+	isEnabled() {
+		return this.dialog.parentElement != null;
 	}
 
 	/**
@@ -241,11 +332,11 @@ class CardPopupManager {
 	 */
 	open(card) {
 
-		if (this.state !== 'closed') {
+		if (this.dialogState !== 'closed') {
 			this.close();
 		}
 
-		this.state = 'open';
+		this.dialogState = 'open';
 
 		const cardClone = card.cloneNode(true);
 		this.dialog.appendChild(cardClone);
@@ -261,12 +352,33 @@ class CardPopupManager {
 	 * Dismiss the current card.
 	 */
 	close() {
-		if (useCosmeticAnimations() && this.state === 'open') {
-			this.state = 'closing';
+		if (useCosmeticAnimations() && this.dialogState === 'open') {
+			this.dialogState = 'closing';
 			this.dialog.classList.add('animate', 'hidden');
 		} else {
 			this.dialog.close();
 		}
 	}
 
+	/**
+	 * @private
+	 * @param {PointerEvent} event 
+	 */
+	cardOnClick = (event) => {
+		if (event.currentTarget instanceof HTMLElement) {
+			this.open(event.currentTarget);
+		}
+	}
+
+	/**
+	 * @private
+	 * @param {KeyboardEvent} event 
+	 */
+	cardOnKeypress = (event) => {
+		if (event.currentTarget instanceof HTMLElement) {
+			if (event.key === 'Enter') {
+				this.open(event.currentTarget);
+			}
+		}
+	}
 }
