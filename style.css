@@ -8,17 +8,17 @@
 	--margin-navbar-entry: 1.2em;
 	--padding-vertical-navbar-entry: 0.6em;
 	--padding-horizontal-navbar-entry: 6vw;
-	--radius-navbar-entry: 1em;
-
-	--padding-footer: 3em 2em;
+	--radius-navbar-entry: var(--radius-card);
+	
+	--padding-footer: 2em 1.5em;
 	--padding-footer-contact-icon: 1em;
 
-	--padding-card: 1.5em 1.5em;
+	--padding-card: 1em;
 	--padding-card-popup: 1.5em;
-	--radius-card: 1.8em;
+	--radius-card: 0.5em;
 
 	--margin-hr: 2em;
-	--width-hr: 90%;
+	--width-hr: 100%;
 
 	--gap-grid: min(1.5em, 3vw);
 

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	cardPopupManager = new CardPopupManager(main);
 
-	const settingsHeading = document.createElement('h2');
+	const settingsHeading = document.createElement('h3');
 	settingsHeading.textContent = 'Display Settings';
 	footer.appendChild(settingsHeading);
 
