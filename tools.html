@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>orca's misc. tools</title>
+
+	<script src="/js/main.js"></script>
+
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/dark.css" media="(prefers-color-scheme: dark)">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<nav id="navbar">
+		<div id="navbar-entries">
+			<a href="/index.html">Home</a>
+			<a href="/projects.html">Projects</a>
+			<a href="/tools.html" class="selected">Tools</a>
+			<a href="/duck.html">Duck</a>
+		</div>
+	</nav>
+
+	<main>
+		<div class="page-heading center">
+			<div class="card light heading">
+				<h1>Tools</h1>
+				<p>
+					miscellaneous collection of utilities, decided to put this together after coming
+					across <a href="https://www.katsaii.com/sob/index.html">this</a> excellent page
+					by katsaii
+				</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="card purple">
+			<h2>litres/100km calculator</h2>
+			
+			<input type="number" id="litres-per-100_litres">
+			<label for="litres-per-100_litres">Litres used</label>
+
+			<br>
+
+			<input type="number" id="litres-per-100_kilometers">
+			<label for="litres-per-100_kilometers">Kilometers travelled</label>
+
+			<p>
+				<math id="litres-per-100_output"></math>
+			</p>
+
+			<script>(() => {
+				const eLitres = document.getElementById('litres-per-100_litres');
+				const eKilometers = document.getElementById('litres-per-100_kilometers');
+				const eOutput = document.getElementById('litres-per-100_output');
+
+				function update() {
+					const litres = parseFloat(eLitres.value);
+					const kilometers = parseFloat(eKilometers.value);
+
+					if (isNaN(litres) || isNaN(kilometers)) {
+						eOutput.textContent = '';
+						return;
+					}
+
+					eOutput.textContent = ((litres / kilometers) * 100.0).toFixed(2) + 'L/100km';
+				}
+
+				eLitres.oninput = update;
+				eKilometers.oninput = update;
+
+				update();
+			})()</script>
+		</div>
+	</main>
+
+	<footer>
+		<h3>Contact Me</h3>
+		<address id="contact-methods" class="grid horizontal">
+
+			<ul class="nodecor">
+				<li>
+					<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
+				</li>
+			</ul>
+
+			<ul class="nodecor">
+				<li>
+					<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
+				</li>
+			</ul>
+			
+		</address>
+	</footer>
+
+</body>
+</html>
