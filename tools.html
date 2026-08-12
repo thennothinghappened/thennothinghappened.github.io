@@ -41,7 +41,7 @@
 
 		<hr>
 
-		<div class="card purple">
+		<section>
 			<h2>litres/100km calculator</h2>
 			
 			<input type="number" id="litres-per-100_litres">
@@ -78,7 +78,61 @@
 
 				update();
 			})()</script>
-		</div>
+		</section>
+
+		<section>
+			<h2>Days between dates</h2>
+
+			<input type="date" id="time-between-dates_start">
+			<label for="time-between-dates_start">Start date</label>
+
+			<br>
+
+			<input type="date" id="time-between-dates_end">
+			<label for="time-between-dates_end">End date</label>
+
+			<p>
+				<math id="time-between-dates_output"></math>
+			</p>
+
+			<script>(() => {
+				// wow, this is near identical to above lol
+				const eStart = document.getElementById('time-between-dates_start');
+				const eEnd = document.getElementById('time-between-dates_end');
+				const eOutput = document.getElementById('time-between-dates_output');
+
+				function update() {
+					const startDate = new Date(eStart.value);
+					const endDate = new Date(eEnd.value);
+
+					if (isNaN(startDate) || isNaN(endDate)) {
+						eOutput.textContent = '';
+						return;
+					}
+
+					if (startDate > endDate) {
+						eOutput.textContent = 'Start date is after the end date!';
+						return;
+					}
+
+					// Trick from https://flaviocopes.com/how-to-count-days-between-dates-javascript/
+					// Why doesn't JS give us this natively??
+					let days = 0;
+
+					while (startDate < endDate) {
+						startDate.setDate(startDate.getDate() + 1);
+						days += 1;
+					}
+
+					eOutput.textContent = `${days} day${days > 1 ? 's' : ''}.`;
+				}
+
+				eStart.oninput = update;
+				eEnd.oninput = update;
+
+				update();
+			})()</script>
+		</section>
 	</main>
 
 	<footer>
