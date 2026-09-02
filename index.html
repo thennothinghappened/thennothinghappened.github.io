@@ -25,8 +25,15 @@
 
 </head>
 <body>
+	<button class="navbar-toggle-button" id="navbar-expand-button">
+		<i class="fa fa-bars"></i>
+	</button>
 
 	<nav id="navbar">
+		<button class="navbar-toggle-button" id="navbar-collapse-button">
+			<i class="fa fa-close"></i>
+		</button>
+
 		<div id="navbar-entries">
 			<a href="/index.html" class="selected">Home</a>
 			<a href="/projects.html">Projects</a>
@@ -35,19 +42,9 @@
 		</div>
 	</nav>
 
-	<main>
-		<div class="page-heading center">
-			<div class="card light heading" role="button">
-				<h1 id="js-hello">Hello!</h1>
-				<p class="blurb">Welcome to Generic Website 01!</p>
-			</div>
-		</div>
-
-		<hr>
-
-		<div class="grid horizontal">
+	<div class="main-container">
+		<main>
 			<div class="grid vertical">
-
 				<article class="card medium purple">
 
 					<header>
@@ -102,41 +99,28 @@
 						</p>
 					</div>
 				</article>
-				
+
 			</div>
+		</main>
 
-			<a href="/projects.html" class="card medium green animate">
-				<header>
-					<h2>Projects!</h2>
-				</header>
-				<p class="blurb">
-					Actual contributions<b>*</b> to society!
-					<br>
-					<sup><b>*:</b> citation needed</sup>
-				</p>
-			</a>
+		<footer>
+			<h3>Contact Me</h3>
+			<address id="contact-methods" class="grid horizontal">
 
-		</div>
-	</main>
+				<ul class="nodecor">
+					<li>
+						<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
+					</li>
+				</ul>
 
-	<footer>
-		<h3>Contact Me</h3>
-		<address id="contact-methods" class="grid horizontal">
-
-			<ul class="nodecor">
-				<li>
-					<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
-				</li>
-			</ul>
-
-			<ul class="nodecor">
-				<li>
-					<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
-				</li>
-			</ul>
-			
-		</address>
-	</footer>
-
+				<ul class="nodecor">
+					<li>
+						<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
+					</li>
+				</ul>
+				
+			</address>
+		</footer>
+	</div>
 </body>
 </html>

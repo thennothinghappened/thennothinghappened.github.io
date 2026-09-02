@@ -7,7 +7,7 @@
 	/* Sizing */
 	--margin-navbar-entry: 1.2em;
 	--padding-vertical-navbar-entry: 0.6em;
-	--padding-horizontal-navbar-entry: 6vw;
+	--padding-horizontal-navbar-entry: 0.6em;
 	--radius-navbar-entry: var(--radius-card);
 	
 	--padding-footer: 2em 1.5em;
@@ -82,9 +82,11 @@
 
 body {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	margin: 0;
+
 	min-height: 100vh;
+	width: 100vw;
 	
 	font-family: var(--font-family);
 	color: var(--colour-text-main);
@@ -92,10 +94,15 @@ body {
 	background-color: var(--colour-background);
 }
 
+.main-container {
+	display: flex;
+	flex-direction: column;
+}
+
 main {
 
 	flex-grow: 1;
-	padding: 7.5vh 20vw;
+	padding: 7.5vh 10vw;
 	box-sizing: border-box;
 	
 	transition-property: opacity, transform;
@@ -111,10 +118,6 @@ main {
 	animation-iteration-count: 1;
 	animation-play-state: running;
 
-}
-
-body.popup-cards > main {
-	padding: 7.5vh 15vw;
 }
 
 code {
@@ -200,7 +203,7 @@ body.popup-cards .grid > * {
 
 .page-heading {
 	width: 100%;
-	height: 60vh;
+	/* height: 60vh; */
 }
 
 /*	  #endregion	  */
@@ -210,22 +213,18 @@ body.popup-cards .grid > * {
 /* #region **************/
 
 #navbar {
-	display: flex;
-
 	background-color: var(--colour-navbar-background);
+	min-width: 20vw;
 }
 
 #navbar-entries {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	flex-direction: column;
 
-	width: 70%;
 	min-width: fit-content;
 }
 
 #navbar-entries a {
-	display: block;
 	margin: calc(var(--margin-navbar-entry) - var(--padding-vertical-navbar-entry));
 	padding: var(--padding-vertical-navbar-entry) var(--padding-horizontal-navbar-entry);
 	border-radius: var(--radius-navbar-entry);
@@ -476,9 +475,41 @@ body.popup-cards dialog > .card > .content {
 	display: block;
 }
 
+.navbar-toggle-button {
+	display: none;
+}
+
 @media only screen and (max-width: 800px) {
 	main, body.popup-cards > main {
 		padding: 7.5vh 5vw !important;
+	}
+
+	body.js-enabled #navbar {
+		position: fixed;
+		translate: -100% 0;
+		transition: 0.25s ease;
+		min-width: 40vw;
+		height: 100vh;
+		z-index: 1000;
+	}
+
+	body.js-enabled #navbar.expanded {
+		translate: 0 0;
+	}
+
+	body.js-enabled .navbar-toggle-button {
+		display: block;
+		border: none;
+		background: none;
+		cursor: pointer;
+		font-size: 3em;
+		width: 1.5em;
+		aspect-ratio: 1;
+		z-index: 1000;
+	}
+
+	body.js-enabled #navbar-expand-button {
+		position: fixed;
 	}
 }
 
@@ -502,6 +533,10 @@ body.popup-cards dialog > .card > .content {
 	}
 
 	.card > header > a {
+		transition: none;
+	}
+
+	.navbar-toggle-button, #navbar {
 		transition: none;
 	}
 	

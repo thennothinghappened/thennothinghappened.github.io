@@ -17,15 +17,15 @@
 
 </head>
 <body>
-
-	<script>
-		// Immediately enable dark mode so there's no white flash since we use modules now.
-		if (localStorage.getItem('dark') === 'true') {
-			document.body.classList.add('dark');
-		}
-	</script>
+	<button class="navbar-toggle-button" id="navbar-expand-button">
+		<i class="fa fa-bars"></i>
+	</button>
 
 	<nav id="navbar">
+		<button class="navbar-toggle-button" id="navbar-collapse-button">
+			<i class="fa fa-close"></i>
+		</button>
+
 		<div id="navbar-entries">
 			<a href="/index.html">Home</a>
 			<a href="/projects.html">Projects</a>
@@ -34,39 +34,40 @@
 		</div>
 	</nav>
 
-	<main>
-		<div class="grid center">
-			<figure class="card heading">
-				<a href="https://www.flickr.com/photos/m-i-k-e/5991999576/">
-					<img
-						src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flive.staticflickr.com%2F6146%2F5991999576_5b933da0db_b.jpg&f=1&nofb=1"
-						alt="cute ducky"
-						title="cute ducky ('Cute Duck', Michael Kappel 2011, CC)"
-						style=" border-radius: var(--radius-card); width: 100%; min-width: 300px;">
-				</a>
-				<figcaption>'Cute Duck', Michael Kappel 2011, CC</figcaption>
-			</figure>
-		</div>
-	</main>
+	<div class="main-container">
+		<main>
+			<div class="grid center">
+				<figure class="card heading">
+					<a href="https://www.flickr.com/photos/m-i-k-e/5991999576/">
+						<img
+							src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flive.staticflickr.com%2F6146%2F5991999576_5b933da0db_b.jpg&f=1&nofb=1"
+							alt="cute ducky"
+							title="cute ducky ('Cute Duck', Michael Kappel 2011, CC)"
+							style=" border-radius: var(--radius-card); width: 100%; min-width: 300px;">
+					</a>
+					<figcaption>'Cute Duck', Michael Kappel 2011, CC</figcaption>
+				</figure>
+			</div>
+		</main>
 
-	<footer>
-		<h3>Contact Me</h3>
-		<address id="contact-methods" class="grid horizontal">
+		<footer>
+			<h3>Contact Me</h3>
+			<address id="contact-methods" class="grid horizontal">
 
-			<ul class="nodecor">
-				<li>
-					<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
-				</li>
-			</ul>
+				<ul class="nodecor">
+					<li>
+						<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
+					</li>
+				</ul>
 
-			<ul class="nodecor">
-				<li>
-					<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
-				</li>
-			</ul>
-			
-		</address>
-	</footer>
-
+				<ul class="nodecor">
+					<li>
+						<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
+					</li>
+				</ul>
+				
+			</address>
+		</footer>
+	</div>
 </body>
 </html>

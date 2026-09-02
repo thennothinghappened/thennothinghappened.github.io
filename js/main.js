@@ -12,9 +12,18 @@ let themeManager;
 let cardPopupManager;
 
 document.addEventListener('DOMContentLoaded', () => {
-
+	document.body.classList.add('js-enabled');
+	
 	main = document.querySelector('main');
-	navEntries = document.querySelector('#navbar-entries');
+
+	const navBar = document.getElementById('navbar');
+	navEntries = navBar.querySelector('#navbar-entries');
+
+	const navExpandButton = document.getElementById('navbar-expand-button');
+	navExpandButton.addEventListener('click', () => navBar.classList.toggle('expanded'));
+
+	const navCollapseButton = document.getElementById('navbar-collapse-button');
+	navCollapseButton.addEventListener('click', () => navBar.classList.toggle('expanded'));
 	
 	const footer = document.querySelector('footer');
 	themeManager = new ThemeManager();
@@ -54,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('pageshow', animatePageShow);
 
 	for (const anchor of document.querySelectorAll('main a:not([href^="#"])')) {
-		
 		if (!(anchor instanceof HTMLAnchorElement)) {
 			continue;
 		}
@@ -62,9 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (new URL(anchor.href).origin !== window.location.origin) {
 			continue;
 		}
-
-		anchor.addEventListener('click', animateSameSiteHide);
-		
 	}
 
 });
@@ -83,30 +88,6 @@ function animatePageHide() {
  */
 function animatePageShow() {
 	main.classList.remove('fadeout');
-	animateSameSiteShow();
-}
-
-/**
- * Begin the animation for switching to another in-site content tab.
- */
-function animateSameSiteHide() {
-	if (useCosmeticAnimations()) {
-		navEntries.scrollIntoView({ behavior: 'smooth' });
-		window.localStorage.scrollBackIn = 'true';
-	}
-}
-
-/**
- * Finish the tab-switch animation on the receiving side.
- */
-function animateSameSiteShow() {
-	if (window.localStorage.scrollBackIn === 'true') {
-		delete window.localStorage.scrollBackIn;
-
-		if (useCosmeticAnimations()) {
-			main.scrollIntoView({ behavior: 'smooth' });
-		}
-	}
 }
 
 /**
@@ -121,7 +102,8 @@ function useCosmeticAnimations() {
  * Whether to show cards as pop-ups, or just display articles as-is.
  */
 function usePopupCards() {
-	return window.localStorage.usePopupCards !== 'false';
+	return window.localStorage.usePopupCards !== 'false'
+		&& document.body.classList.contains('allow-popup-cards');
 }
 
 /**

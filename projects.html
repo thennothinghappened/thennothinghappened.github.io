@@ -16,9 +16,16 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="allow-popup-cards">
+	<button class="navbar-toggle-button" id="navbar-expand-button">
+		<i class="fa fa-bars"></i>
+	</button>
 
 	<nav id="navbar">
+		<button class="navbar-toggle-button" id="navbar-collapse-button">
+			<i class="fa fa-close"></i>
+		</button>
+
 		<div id="navbar-entries">
 			<a href="/index.html">Home</a>
 			<a href="/projects.html" class="selected">Projects</a>
@@ -27,391 +34,392 @@
 		</div>
 	</nav>
 
-	<main>
-		<div class="page-heading center">
-			<div class="card light heading">
-				<h1>Projects</h1>
-				<p class="blurb">Some of the projects I've worked on.</p>
+	<div class="main-container">
+		<main>
+			<div class="page-heading center">
+				<div class="card light heading">
+					<h1>Projects</h1>
+					<p class="blurb">Some of the projects I've worked on.</p>
+				</div>
 			</div>
-		</div>
 
-		<hr>
+			<hr>
 
-		<div class="center">
+			<div class="center">
 
-			<div class="grid horizontal flow">
+				<div class="grid horizontal flow use-popup-cards">
 
-				<article class="card purple">
-					<header>
-						<img src="/media/icons/pelorus.png" alt="">
-						<h2>Pelorus</h2>
-						<a href="https://github.com/thennothinghappened/pelorus"><i class="fa fa-external-link"></i></a>
-					</header>
+					<article class="card purple">
+						<header>
+							<img src="/media/icons/pelorus.png" alt="">
+							<h2>Pelorus</h2>
+							<a href="https://github.com/thennothinghappened/pelorus"><i class="fa fa-external-link"></i></a>
+						</header>
 
-					<p class="blurb">A custom Multiplatform Compose client for <b>Compass</b>.</p>
+						<p class="blurb">A custom Multiplatform Compose client for <b>Compass</b>.</p>
 
-					<div class="content">
+						<div class="content">
+							
+							<p>
+								As the name suggests, <a href="https://github.com/thennothinghappened/pelorus">Pelorus</a>
+								is a client for the <a href="https://compass.education">Compass</a> LMS service.
+							</p>
+
+							<p>
+								The initial drive of the project was to hopefully bring most of the important functionality
+								into a proper native app for Android, and additionally, desktop. Compass has a lot of issues,
+								and the mobile app especially is particularly plagued with them.
+							</p>
+
+							<p>
+								The other main drive for the project was of course, just to learn! Pelorus was made entirely
+								with unfamiliar tooling, and the majority of the work was done over the course of a few weeks
+								in the 2023 January holidays.
+							</p>
+
+							<p>
+								While the codebase could really do with improvements, the end result was a much faster and less
+								buggy app than the official offering, and overall, I'm pretty happy with it given that!
+							</p>
+
+						</div>
+					</article>
+
+					<article class="card blue">
+						<header>
+							<img src="/media/icons/kotlin.svg" alt="">
+							<h2>Kotlass</h2>
+							<a href="https://github.com/thennothinghappened/kotlass"><i class="fa fa-external-link"></i></a>
+						</header>
 						
-						<p>
-							As the name suggests, <a href="https://github.com/thennothinghappened/pelorus">Pelorus</a>
-							is a client for the <a href="https://compass.education">Compass</a> LMS service.
-						</p>
+						<p class="blurb">The companion API library for <b>Pelorus</b>.</p>
 
-						<p>
-							The initial drive of the project was to hopefully bring most of the important functionality
-							into a proper native app for Android, and additionally, desktop. Compass has a lot of issues,
-							and the mobile app especially is particularly plagued with them.
-						</p>
+						<div class="content">
+							<p>
+								<a href="https://github.com/thennothinghappened/kotlass">Kotlass</a>
+								was my first introduction to the Kotlin programming language - as with
+								Pelorus, it also suffers from some pretty bad programming practices, but once again,
+								it gets the job done, and being my first time in the Java ecosystem, and in dealing
+								with any sort of API client - it's alright.
+							</p>
+							<p>
+								I do plan to, when time allows, rewrite both of these two from the ground up, given
+								what I've learnt.
+							</p>
+						</div>
+					</article>
 
-						<p>
-							The other main drive for the project was of course, just to learn! Pelorus was made entirely
-							with unfamiliar tooling, and the majority of the work was done over the course of a few weeks
-							in the 2023 January holidays.
-						</p>
-
-						<p>
-							While the codebase could really do with improvements, the end result was a much faster and less
-							buggy app than the official offering, and overall, I'm pretty happy with it given that!
-						</p>
-
-					</div>
-				</article>
-
-				<article class="card blue">
-					<header>
-						<img src="/media/icons/kotlin.svg" alt="">
-						<h2>Kotlass</h2>
-						<a href="https://github.com/thennothinghappened/kotlass"><i class="fa fa-external-link"></i></a>
-					</header>
-					
-					<p class="blurb">The companion API library for <b>Pelorus</b>.</p>
-
-					<div class="content">
-						<p>
-							<a href="https://github.com/thennothinghappened/kotlass">Kotlass</a>
-							was my first introduction to the Kotlin programming language - as with
-							Pelorus, it also suffers from some pretty bad programming practices, but once again,
-							it gets the job done, and being my first time in the Java ecosystem, and in dealing
-							with any sort of API client - it's alright.
-						</p>
-						<p>
-							I do plan to, when time allows, rewrite both of these two from the ground up, given
-							what I've learnt.
-						</p>
-					</div>
-				</article>
-
-				<article class="card orange">
-					<header>
-						<img
-							src="/media/icons/gmedit.png"
-							alt="GMEdit Logo">
-						<h2>GMEdit-Constructor</h2>
-						<a href="https://github.com/thennothinghappened/GMEdit-Constructor"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">A GMEdit extension for compiling straight from the editor.</p>
-
-					<div class="content">
-						<p>
-							Thanks to the rate of progress in recent years by the team at YoYo Games, the old methods of
-							compiling from outside of the IDE been effectively obsoleted by a proper command-line tool
-							for managing runtimes. This tool is far from perfect, but GMEdit's popular plugin
-							<a href="https://github.com/YAL-GMEdit/builder">builder</a>, which directly invoked the
-							compiler, hasn't been able to keep up with the rate of changes.
-						</p>
-						<p>
-							Due to this, I took on making a replacement which uses YYG's new toolchain, and hopes to
-							offer a lot more polish and functionality, while being a more maintainable codebase.
-						</p>
-						<p>
-							Constructor is a bit of an anomaly as far as GMEdit plugins go, as it does everything a bit
-							weird - I'm personally a huge fan of being able to use modern language features, and jumped
-							straight into the deep end by taping together an ad-hoc way to use ES modules, type
-							definitions, among others, whilst still working within the constraints of GMEdit's now quite
-							old structure.
-						</p>
-						<p>
-							In future, I'm hoping to extend support to GMRT's new toolchain, which exists separately
-							from the current one - I believe that doing so would be set GMEdit up to "make it" into the
-							modern age of GM which sits over the horizon, which it has so far had trouble keeping up
-							with in the transitional period in between.
-						</p>
-					</div>
-				</article>
-
-				<article class="card blue">
-					<header>
-						<img src="/media/icons/kotlin.svg" alt="">
-						<h2>HtmlText</h2>
-						<a href="https://github.com/thennothinghappened/htmltext"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">Simple Compose Multiplatform library for rendering HTML.</p>
-
-					<div class="content">
-						<p>
-							There isn't a huge amount to say about this one - moreso an entry to fill in space,
-							but at the time of writing Pelorus, there wasn't any library capable of rendering any
-							remotely complicated HTML (that I'm aware of) available for Multiplatform.
-						</p>
-						<p>
-							My solution was to create <a href="https://github.com/thennothinghappened/htmltext">HtmlText</a>,
-							my quite horrid solution to the problem, which certainly does do the job, at least.
-						</p>
-					</div>
-				</article>
-
-				<article class="card orange">
-					<header>
-						<img src="/media/icons/javascript.svg" alt="">
-						<h2>JNIX</h2>
-						<a href="https://github.com/thennothinghappened/JNIX"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">A <em>horrible</em> idea.</p>
-
-					<div class="content">
-						<p>
-							<i>What is <a href="https://github.com/thennothinghappened/JNIX">JNIX</a>?</i>
-							Good question, hypothetical person!
-						</p>
-						<p>
-							<i>JNIX</i>, to summarise, is an abomination under construction - or rather, my attempt
-							to create a minature subset of a <i>*NIX-like</i> OS under JavaScript, by using Web Workers.
-						</p>
-						<p>
-							Without yet having a working build, the project has gone through multiple total rewrites,
-							and now ships with a <q>compiler</q>, if you could call it that - to turn ES6 modules into
-							single runnable files in its own format - to give you an idea how bad this is.
-						</p>
-						<p>
-							I hope to again have time to work on it, purely for the fun of it. Making it requires learning
-							a whole lot about how the underlying systems behind computers work, and that's fun!
-						</p>
-					</div>
-				</article>
-
-				<article class="card green">
-					<header>
-						<img
-							src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/gamemaker/gamemaker.png"
-							alt="GameMaker logo">
-						<h2>gml-web</h2>
-						<a href="https://github.com/thennothinghappened/gml-web/"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">A poor imitation of ExpressJS, written in GameMaker.</p>
-
-					<div class="content">
-						<p>
-							As the blurb summarises, <a href="https://github.com/thennothinghappened/gml-web/">gml-web</a>
-							is a little project I threw together a while back, with the goal of imitating ExpressJS's
-							way of setting up a web server.
-						</p>
-						<p>
-							It turned out alright, given my lack of experience, and follows the same architecture as the
-							JS library it was based off.
-						</p>
-						<p>
-							This project is actually an extension of my earlier <a href="https://github.com/thennothinghappened/gamemaker-http-server">gamemaker-http-server</a>,
-							which was far more limited in scope, had several glaring security issues (not to say this doesn't!), and was far buggier.
-						</p>
-					</div>
-				</article>
-
-				<article class="card purple">
-					<header>
-						<img src="/media/icons/aero-win-horrific-lazy-standin-logo.png" alt="Windows 7 logo with a JavaScript logo superimposed on top.">
-						<h2>AeroWin</h2>
-						<a href="https://github.com/thennothinghappened/win7site"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">Faking Windows 7 in the browser.</p>
-
-					<div class="content">
-						<p>
-							<a href="https://github.com/thennothinghappened/win7site">AeroWin</a>
-							was my first attempt at making something that resembled an OS in the browser.
-						</p>
-						<p>
-							It originally started out as trying to imitate the Windows 7 style UI, but moved onto
-							incorporating actual applications, and a filesystem (by way of <code>localStorage</code>).
-						</p>
-						<p>
-							I intended to take it further - started work on user-written app support, but hit a wall
-							with multitasking: JS being a singlethreaded language, it would be pretty similar to early
-							systems, where either one app at a time gets to do work, or implementing cooperative
-							multitasking - where apps have to give control back to the system when they're done.
-						</p>
-						<p>
-							I wasn't happy with these compromises, so the project stopped. Much later, from this, JNIX
-							emerged, as a second go, with a full, <q><i>real</i></q> system!
-						</p>
-						<h2><a href="/win7site/index.html">Try it!</a></h2>
-					</div>
-				</article>
-
-				<article class="card blue">
-					<header>
-						<img src="/media/icons/discord.svg" alt="">
-						<h2>becomebot</h2>
-						<a href="https://github.com/thennothinghappened/becomebot"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">Boring CLI utility to talk as a Discord bot.</p>
-
-					<div class="content">
-						<p>
-							There isn't much to say about this one, it was one of my earlier projects -
-							title is self-explanatory.
-						</p>
-						<p>
-							This was one of my first times really using JavaScript.
-						</p>
-					</div>
-				</article>
-
-				<article class="card green">
-					<header>
-						<img
-							src="/media/icons/slimeform-infinity.png"
-							alt="Slimy boi (Slimeform Infinity game icon)">
-						<h2>Slimeform Infinity</h2>
-					</header>
-
-					<p class="blurb">My long-running, terrible platforming game series!</p>
-
-					<div class="content">
-						<p>
-							Slimeform Infinity is a series of games I made over the course of a few days
-							each attempt, over a few years spanning back to <q>Slime Dungeon</q> in 2019 on <i>GameMaker: Studio 1.4</i>,
-							to the original <b>Slimeform Infinity</b>, then v2 on <i>GameMaker: Studio 2</i>, and finally a new
-							version in progress now!
-						</p>
-
-						<h3>Download links</h3>
-						<ul>
-							<li>
-								<a href="https://1drv.ms/f/s!Avw4stgnVitOg_cI1iuRqeuOsaIT7g?e=g0Vey7">Slimeform Infinity 1 <code>v2</code> to <code>v5.95</code></a>
-							</li>
-							<li>
-								<a href="https://1drv.ms/f/s!Avw4stgnVitOg_cHcvjpAGvWhq8SYg?e=oQVD7R">Slimeform Infinity 2 <code>a0.3.8</code> to <code>a0.3.9</code></a>
-							</li>
-							<li>
-								Slimeform Infinity 3 (to be added :P)
-							</li>
-						</ul>
-					</div>
-				</article>
-
-				<article class="card orange">
-					<header>
-						<img
-							src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1200px-Firefox_logo%2C_2019.svg.png"
-							alt="firefox's default favicon">
-						<h2>This website</h2>
-					</header>
-
-					<p class="blurb">Winner for most generic website ever!</p>
-
-					<div class="content">
-						<p>
-							If you're wondering <em>why</em> the site looks so generic, the answer is simple: I had a
-							school project due <em>very</em> soon (i.e., two days remaining), and was way more
-							interested in working on JNIX at the time.
-						</p>
-						<p>
-							Since JNIX wasn't in any usable state (and never really went anywhere in the end), I hastily
-							put together a submission that'd tick all the necessary boxes for the assignment. An
-							interesting aside from this is that I used a design tool (figma) to work out the layout
-							ahead of time, whereas my previous approach had always been "just work until it looks good
-							enough!".
-						</p>
-						<p>
-							In contrast, the approach of making a mock-up first ended up being a great idea, since it
-							was now just a job of re-creating the design I already had in mind, in the actual medium -
-							unsurprisingly, this meant the bulk of the project was done within a few hours, and from
-							there I tinkered with some homebrew single-page application code (also new to me at the
-							time!)
-						</p>
-						<p>
-							Since I've not had any direct motivation since then to make something better, and this
-							technically works as a personal site, it hasn't changed a whole lot since then besides a
-							deal of tinkering in the background to make it more friendly to screen readers and whatnot.
-						</p>
-						<iframe
-							src="/index.html"
-							loading="lazy"
-							style="border: none; width: 100%; height: 60vh;"></iframe>
-					</div>
-				</article>
-
-				<article class="card purple">
-					<header>
-						<img src="/media/icons/half-life-2.png" alt="Half-Life 2 Logo">
-						<h2>gml-hlgui</h2>
-						<a href="https://github.com/thennothinghappened/gml-hlgui"><i class="fa fa-external-link"></i></a>
-					</header>
-
-					<p class="blurb">
-						Substantially evil library mimicking the Half-Life 2 VGUI system in GM.
-					</p>
-
-					<div class="content">
-						<!-- Interactive demo. -->
-						<figure hidden>
-							<iframe
-								src="/demos/gml-hlgui/index.html"
-								loading="lazy" 
-								width="800"
-								height="600"
-								style="border: none;">
-							</iframe>
-							<figcaption>Interactive demonstration - give it a try!</figcaption>
-						</figure>
-
-						<!-- Fallback video. -->
-						<figure>
+					<article class="card orange">
+						<header>
 							<img
-								src="/media/gml-hlgui-demo.gif" 
-								alt="Demonstration of the example project included with the library." 
-								loading="lazy">
-							<figcaption>Example UI using the library (lizard sold separately)</figcaption>
-						</figure>
+								src="/media/icons/gmedit.png"
+								alt="GMEdit Logo">
+							<h2>GMEdit-Constructor</h2>
+							<a href="https://github.com/thennothinghappened/GMEdit-Constructor"><i class="fa fa-external-link"></i></a>
+						</header>
 
-						<!-- If we have JS, we'll swap for the interactive version. -->
-						<script>
-							document.currentScript.parentElement.querySelectorAll('figure').forEach(figure => {
-								figure.hidden = !figure.hidden;
-							});
-						</script>
-					</div>
-				</article>
+						<p class="blurb">A GMEdit extension for compiling straight from the editor.</p>
+
+						<div class="content">
+							<p>
+								Thanks to the rate of progress in recent years by the team at YoYo Games, the old methods of
+								compiling from outside of the IDE been effectively obsoleted by a proper command-line tool
+								for managing runtimes. This tool is far from perfect, but GMEdit's popular plugin
+								<a href="https://github.com/YAL-GMEdit/builder">builder</a>, which directly invoked the
+								compiler, hasn't been able to keep up with the rate of changes.
+							</p>
+							<p>
+								Due to this, I took on making a replacement which uses YYG's new toolchain, and hopes to
+								offer a lot more polish and functionality, while being a more maintainable codebase.
+							</p>
+							<p>
+								Constructor is a bit of an anomaly as far as GMEdit plugins go, as it does everything a bit
+								weird - I'm personally a huge fan of being able to use modern language features, and jumped
+								straight into the deep end by taping together an ad-hoc way to use ES modules, type
+								definitions, among others, whilst still working within the constraints of GMEdit's now quite
+								old structure.
+							</p>
+							<p>
+								In future, I'm hoping to extend support to GMRT's new toolchain, which exists separately
+								from the current one - I believe that doing so would be set GMEdit up to "make it" into the
+								modern age of GM which sits over the horizon, which it has so far had trouble keeping up
+								with in the transitional period in between.
+							</p>
+						</div>
+					</article>
+
+					<article class="card blue">
+						<header>
+							<img src="/media/icons/kotlin.svg" alt="">
+							<h2>HtmlText</h2>
+							<a href="https://github.com/thennothinghappened/htmltext"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">Simple Compose Multiplatform library for rendering HTML.</p>
+
+						<div class="content">
+							<p>
+								There isn't a huge amount to say about this one - moreso an entry to fill in space,
+								but at the time of writing Pelorus, there wasn't any library capable of rendering any
+								remotely complicated HTML (that I'm aware of) available for Multiplatform.
+							</p>
+							<p>
+								My solution was to create <a href="https://github.com/thennothinghappened/htmltext">HtmlText</a>,
+								my quite horrid solution to the problem, which certainly does do the job, at least.
+							</p>
+						</div>
+					</article>
+
+					<article class="card orange">
+						<header>
+							<img src="/media/icons/javascript.svg" alt="">
+							<h2>JNIX</h2>
+							<a href="https://github.com/thennothinghappened/JNIX"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">A <em>horrible</em> idea.</p>
+
+						<div class="content">
+							<p>
+								<i>What is <a href="https://github.com/thennothinghappened/JNIX">JNIX</a>?</i>
+								Good question, hypothetical person!
+							</p>
+							<p>
+								<i>JNIX</i>, to summarise, is an abomination under construction - or rather, my attempt
+								to create a minature subset of a <i>*NIX-like</i> OS under JavaScript, by using Web Workers.
+							</p>
+							<p>
+								Without yet having a working build, the project has gone through multiple total rewrites,
+								and now ships with a <q>compiler</q>, if you could call it that - to turn ES6 modules into
+								single runnable files in its own format - to give you an idea how bad this is.
+							</p>
+							<p>
+								I hope to again have time to work on it, purely for the fun of it. Making it requires learning
+								a whole lot about how the underlying systems behind computers work, and that's fun!
+							</p>
+						</div>
+					</article>
+
+					<article class="card green">
+						<header>
+							<img
+								src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/gamemaker/gamemaker.png"
+								alt="GameMaker logo">
+							<h2>gml-web</h2>
+							<a href="https://github.com/thennothinghappened/gml-web/"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">A poor imitation of ExpressJS, written in GameMaker.</p>
+
+						<div class="content">
+							<p>
+								As the blurb summarises, <a href="https://github.com/thennothinghappened/gml-web/">gml-web</a>
+								is a little project I threw together a while back, with the goal of imitating ExpressJS's
+								way of setting up a web server.
+							</p>
+							<p>
+								It turned out alright, given my lack of experience, and follows the same architecture as the
+								JS library it was based off.
+							</p>
+							<p>
+								This project is actually an extension of my earlier <a href="https://github.com/thennothinghappened/gamemaker-http-server">gamemaker-http-server</a>,
+								which was far more limited in scope, had several glaring security issues (not to say this doesn't!), and was far buggier.
+							</p>
+						</div>
+					</article>
+
+					<article class="card purple">
+						<header>
+							<img src="/media/icons/aero-win-horrific-lazy-standin-logo.png" alt="Windows 7 logo with a JavaScript logo superimposed on top.">
+							<h2>AeroWin</h2>
+							<a href="https://github.com/thennothinghappened/win7site"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">Faking Windows 7 in the browser.</p>
+
+						<div class="content">
+							<p>
+								<a href="https://github.com/thennothinghappened/win7site">AeroWin</a>
+								was my first attempt at making something that resembled an OS in the browser.
+							</p>
+							<p>
+								It originally started out as trying to imitate the Windows 7 style UI, but moved onto
+								incorporating actual applications, and a filesystem (by way of <code>localStorage</code>).
+							</p>
+							<p>
+								I intended to take it further - started work on user-written app support, but hit a wall
+								with multitasking: JS being a singlethreaded language, it would be pretty similar to early
+								systems, where either one app at a time gets to do work, or implementing cooperative
+								multitasking - where apps have to give control back to the system when they're done.
+							</p>
+							<p>
+								I wasn't happy with these compromises, so the project stopped. Much later, from this, JNIX
+								emerged, as a second go, with a full, <q><i>real</i></q> system!
+							</p>
+							<h2><a href="/win7site/index.html">Try it!</a></h2>
+						</div>
+					</article>
+
+					<article class="card blue">
+						<header>
+							<img src="/media/icons/discord.svg" alt="">
+							<h2>becomebot</h2>
+							<a href="https://github.com/thennothinghappened/becomebot"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">Boring CLI utility to talk as a Discord bot.</p>
+
+						<div class="content">
+							<p>
+								There isn't much to say about this one, it was one of my earlier projects -
+								title is self-explanatory.
+							</p>
+							<p>
+								This was one of my first times really using JavaScript.
+							</p>
+						</div>
+					</article>
+
+					<article class="card green">
+						<header>
+							<img
+								src="/media/icons/slimeform-infinity.png"
+								alt="Slimy boi (Slimeform Infinity game icon)">
+							<h2>Slimeform Infinity</h2>
+						</header>
+
+						<p class="blurb">My long-running, terrible platforming game series!</p>
+
+						<div class="content">
+							<p>
+								Slimeform Infinity is a series of games I made over the course of a few days
+								each attempt, over a few years spanning back to <q>Slime Dungeon</q> in 2019 on <i>GameMaker: Studio 1.4</i>,
+								to the original <b>Slimeform Infinity</b>, then v2 on <i>GameMaker: Studio 2</i>, and finally a new
+								version in progress now!
+							</p>
+
+							<h3>Download links</h3>
+							<ul>
+								<li>
+									<a href="https://1drv.ms/f/s!Avw4stgnVitOg_cI1iuRqeuOsaIT7g?e=g0Vey7">Slimeform Infinity 1 <code>v2</code> to <code>v5.95</code></a>
+								</li>
+								<li>
+									<a href="https://1drv.ms/f/s!Avw4stgnVitOg_cHcvjpAGvWhq8SYg?e=oQVD7R">Slimeform Infinity 2 <code>a0.3.8</code> to <code>a0.3.9</code></a>
+								</li>
+								<li>
+									Slimeform Infinity 3 (to be added :P)
+								</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="card orange">
+						<header>
+							<img
+								src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1200px-Firefox_logo%2C_2019.svg.png"
+								alt="firefox's default favicon">
+							<h2>This website</h2>
+						</header>
+
+						<p class="blurb">Winner for most generic website ever!</p>
+
+						<div class="content">
+							<p>
+								If you're wondering <em>why</em> the site looks so generic, the answer is simple: I had a
+								school project due <em>very</em> soon (i.e., two days remaining), and was way more
+								interested in working on JNIX at the time.
+							</p>
+							<p>
+								Since JNIX wasn't in any usable state (and never really went anywhere in the end), I hastily
+								put together a submission that'd tick all the necessary boxes for the assignment. An
+								interesting aside from this is that I used a design tool (figma) to work out the layout
+								ahead of time, whereas my previous approach had always been "just work until it looks good
+								enough!".
+							</p>
+							<p>
+								In contrast, the approach of making a mock-up first ended up being a great idea, since it
+								was now just a job of re-creating the design I already had in mind, in the actual medium -
+								unsurprisingly, this meant the bulk of the project was done within a few hours, and from
+								there I tinkered with some homebrew single-page application code (also new to me at the
+								time!)
+							</p>
+							<p>
+								Since I've not had any direct motivation since then to make something better, and this
+								technically works as a personal site, it hasn't changed a whole lot since then besides a
+								deal of tinkering in the background to make it more friendly to screen readers and whatnot.
+							</p>
+							<iframe
+								src="/index.html"
+								loading="lazy"
+								style="border: none; width: 100%; height: 60vh;"></iframe>
+						</div>
+					</article>
+
+					<article class="card purple">
+						<header>
+							<img src="/media/icons/half-life-2.png" alt="Half-Life 2 Logo">
+							<h2>gml-hlgui</h2>
+							<a href="https://github.com/thennothinghappened/gml-hlgui"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">
+							Substantially evil library mimicking the Half-Life 2 VGUI system in GM.
+						</p>
+
+						<div class="content">
+							<!-- Interactive demo. -->
+							<figure hidden>
+								<iframe
+									src="/demos/gml-hlgui/index.html"
+									loading="lazy" 
+									width="800"
+									height="600"
+									style="border: none;">
+								</iframe>
+								<figcaption>Interactive demonstration - give it a try!</figcaption>
+							</figure>
+
+							<!-- Fallback video. -->
+							<figure>
+								<img
+									src="/media/gml-hlgui-demo.gif" 
+									alt="Demonstration of the example project included with the library." 
+									loading="lazy">
+								<figcaption>Example UI using the library (lizard sold separately)</figcaption>
+							</figure>
+
+							<!-- If we have JS, we'll swap for the interactive version. -->
+							<script>
+								document.currentScript.parentElement.querySelectorAll('figure').forEach(figure => {
+									figure.hidden = !figure.hidden;
+								});
+							</script>
+						</div>
+					</article>
+
+				</div>
 
 			</div>
+		</main>
 
-		</div>
-	</main>
+		<footer>
+			<h3>Contact Me</h3>
+			<address id="contact-methods" class="grid horizontal">
 
-	<footer>
-		<h3>Contact Me</h3>
-		<address id="contact-methods" class="grid horizontal">
+				<ul class="nodecor">
+					<li>
+						<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
+					</li>
+				</ul>
 
-			<ul class="nodecor">
-				<li>
-					<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
-				</li>
-			</ul>
-
-			<ul class="nodecor">
-				<li>
-					<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
-				</li>
-			</ul>
-			
-		</address>
-	</footer>
-
+				<ul class="nodecor">
+					<li>
+						<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
+					</li>
+				</ul>
+				
+			</address>
+		</footer>
+	</div>
 </body>
 </html>

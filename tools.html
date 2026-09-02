@@ -17,8 +17,15 @@
 
 </head>
 <body>
+	<button class="navbar-toggle-button" id="navbar-expand-button">
+		<i class="fa fa-bars"></i>
+	</button>
 
 	<nav id="navbar">
+		<button class="navbar-toggle-button" id="navbar-collapse-button">
+			<i class="fa fa-close"></i>
+		</button>
+
 		<div id="navbar-entries">
 			<a href="/index.html">Home</a>
 			<a href="/projects.html">Projects</a>
@@ -27,132 +34,133 @@
 		</div>
 	</nav>
 
-	<main>
-		<div class="page-heading center">
-			<div class="card light heading">
-				<h1>Tools</h1>
-				<p>
-					miscellaneous collection of utilities, decided to put this together after coming
-					across <a href="https://www.katsaii.com/sob/index.html">this</a> excellent page
-					by katsaii
-				</p>
+	<div class="main-container">
+		<main>
+			<div class="page-heading center">
+				<div class="card light heading">
+					<h1>Tools</h1>
+					<p>
+						miscellaneous collection of utilities, decided to put this together after coming
+						across <a href="https://www.katsaii.com/sob/index.html">this</a> excellent page
+						by katsaii
+					</p>
+				</div>
 			</div>
-		</div>
 
-		<hr>
+			<hr>
 
-		<section>
-			<h2>litres/100km calculator</h2>
-			
-			<input type="number" id="litres-per-100_litres">
-			<label for="litres-per-100_litres">Litres used</label>
+			<section>
+				<h2>litres/100km calculator</h2>
+				
+				<input type="number" id="litres-per-100_litres">
+				<label for="litres-per-100_litres">Litres used</label>
 
-			<br>
+				<br>
 
-			<input type="number" id="litres-per-100_kilometers">
-			<label for="litres-per-100_kilometers">Kilometers travelled</label>
+				<input type="number" id="litres-per-100_kilometers">
+				<label for="litres-per-100_kilometers">Kilometers travelled</label>
 
-			<p>
-				<math id="litres-per-100_output"></math>
-			</p>
+				<p>
+					<math id="litres-per-100_output"></math>
+				</p>
 
-			<script>(() => {
-				const eLitres = document.getElementById('litres-per-100_litres');
-				const eKilometers = document.getElementById('litres-per-100_kilometers');
-				const eOutput = document.getElementById('litres-per-100_output');
+				<script>(() => {
+					const eLitres = document.getElementById('litres-per-100_litres');
+					const eKilometers = document.getElementById('litres-per-100_kilometers');
+					const eOutput = document.getElementById('litres-per-100_output');
 
-				function update() {
-					const litres = parseFloat(eLitres.value);
-					const kilometers = parseFloat(eKilometers.value);
+					function update() {
+						const litres = parseFloat(eLitres.value);
+						const kilometers = parseFloat(eKilometers.value);
 
-					if (isNaN(litres) || isNaN(kilometers)) {
-						eOutput.textContent = '';
-						return;
+						if (isNaN(litres) || isNaN(kilometers)) {
+							eOutput.textContent = '';
+							return;
+						}
+
+						eOutput.textContent = ((litres / kilometers) * 100.0).toFixed(2) + 'L/100km';
 					}
 
-					eOutput.textContent = ((litres / kilometers) * 100.0).toFixed(2) + 'L/100km';
-				}
+					eLitres.oninput = update;
+					eKilometers.oninput = update;
 
-				eLitres.oninput = update;
-				eKilometers.oninput = update;
+					update();
+				})()</script>
+			</section>
 
-				update();
-			})()</script>
-		</section>
+			<section>
+				<h2>Days between dates</h2>
 
-		<section>
-			<h2>Days between dates</h2>
+				<input type="date" id="time-between-dates_start">
+				<label for="time-between-dates_start">Start date</label>
 
-			<input type="date" id="time-between-dates_start">
-			<label for="time-between-dates_start">Start date</label>
+				<br>
 
-			<br>
+				<input type="date" id="time-between-dates_end">
+				<label for="time-between-dates_end">End date</label>
 
-			<input type="date" id="time-between-dates_end">
-			<label for="time-between-dates_end">End date</label>
+				<p>
+					<math id="time-between-dates_output"></math>
+				</p>
 
-			<p>
-				<math id="time-between-dates_output"></math>
-			</p>
+				<script>(() => {
+					// wow, this is near identical to above lol
+					const eStart = document.getElementById('time-between-dates_start');
+					const eEnd = document.getElementById('time-between-dates_end');
+					const eOutput = document.getElementById('time-between-dates_output');
 
-			<script>(() => {
-				// wow, this is near identical to above lol
-				const eStart = document.getElementById('time-between-dates_start');
-				const eEnd = document.getElementById('time-between-dates_end');
-				const eOutput = document.getElementById('time-between-dates_output');
+					function update() {
+						const startDate = new Date(eStart.value);
+						const endDate = new Date(eEnd.value);
 
-				function update() {
-					const startDate = new Date(eStart.value);
-					const endDate = new Date(eEnd.value);
+						if (isNaN(startDate) || isNaN(endDate)) {
+							eOutput.textContent = '';
+							return;
+						}
 
-					if (isNaN(startDate) || isNaN(endDate)) {
-						eOutput.textContent = '';
-						return;
+						if (startDate > endDate) {
+							eOutput.textContent = 'Start date is after the end date!';
+							return;
+						}
+
+						// Trick from https://flaviocopes.com/how-to-count-days-between-dates-javascript/
+						// Why doesn't JS give us this natively??
+						let days = 0;
+
+						while (startDate < endDate) {
+							startDate.setDate(startDate.getDate() + 1);
+							days += 1;
+						}
+
+						eOutput.textContent = `${days} day${days > 1 ? 's' : ''}.`;
 					}
 
-					if (startDate > endDate) {
-						eOutput.textContent = 'Start date is after the end date!';
-						return;
-					}
+					eStart.oninput = update;
+					eEnd.oninput = update;
 
-					// Trick from https://flaviocopes.com/how-to-count-days-between-dates-javascript/
-					// Why doesn't JS give us this natively??
-					let days = 0;
+					update();
+				})()</script>
+			</section>
+		</main>
 
-					while (startDate < endDate) {
-						startDate.setDate(startDate.getDate() + 1);
-						days += 1;
-					}
+		<footer>
+			<h3>Contact Me</h3>
+			<address id="contact-methods" class="grid horizontal">
 
-					eOutput.textContent = `${days} day${days > 1 ? 's' : ''}.`;
-				}
+				<ul class="nodecor">
+					<li>
+						<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
+					</li>
+				</ul>
 
-				eStart.oninput = update;
-				eEnd.oninput = update;
-
-				update();
-			})()</script>
-		</section>
-	</main>
-
-	<footer>
-		<h3>Contact Me</h3>
-		<address id="contact-methods" class="grid horizontal">
-
-			<ul class="nodecor">
-				<li>
-					<a href="https://github.com/thennothinghappened/"><i class="fa fa-github"></i>Github</a>
-				</li>
-			</ul>
-
-			<ul class="nodecor">
-				<li>
-					<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
-				</li>
-			</ul>
-			
-		</address>
-	</footer>
-
+				<ul class="nodecor">
+					<li>
+						<a href="mailto:thennothinghappened+sillywebsite@gmail.com"><i class="fa fa-envelope"></i>Email</a>
+					</li>
+				</ul>
+				
+			</address>
+		</footer>
+	</div>
 </body>
 </html>
