@@ -48,6 +48,41 @@
 			<div class="center">
 
 				<div class="grid horizontal flow use-popup-cards">
+					<article class="card orange">
+						<header>
+							<img
+								src="/media/icons/c-language-logo.svg"
+								alt="C language logo">
+							<h2>ARMLiteC</h2>
+							<a href="https://github.com/thennothinghappened/rust-c-to-armlite"><i class="fa fa-external-link"></i></a>
+						</header>
+
+						<p class="blurb">C23(ish) compiler for ARMLite written in Rust :D</p>
+
+						<div class="content">
+							<video controls src="/media/armlitec-demo.mp4"></video>
+							<p>
+								I got to work with ARMLite for a Uni unit in late 2025, during which
+								time I was already interested in compilers and interpreters. I
+								thought ARMLite's simple instruction set would be a good fit for
+								making something more substantial using what I learnt from writing
+								<a href="https://github.com/thennothinghappened/gml-gml">gml-gml</a>
+								(a GML interpreter).
+							</p>
+							<p>
+								After a few months' work, I managed to put together something that
+								can compile a reasonably useful subset of C23, with the exception of
+								constructs like <code>goto</code> due to how I implemented stack
+								allocation.
+							</p>
+							<p>
+								As far as I know, this is the only C compiler that targets ARMLite,
+								and overall I'm quite proud of this project for how long I stuck
+								with it, and how much I learnt from it.
+							</p>
+							<!-- TODO: WASM version for an interactive demo? -->
+						</div>
+					</article>
 
 					<article class="card purple">
 						<header>

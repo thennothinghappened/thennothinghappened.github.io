@@ -314,7 +314,7 @@ body.popup-cards .card > .content {
 	display: none;
 }
 
-.card > .content img, .card > .content iframe {
+.card > .content img, .card > .content iframe, .card > .content video {
 	max-width: 100%;
 }
 
