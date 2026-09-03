@@ -217,6 +217,12 @@ body.popup-cards .grid > * {
 	min-width: 20vw;
 }
 
+#navbar .banner-image {
+	image-rendering: pixelated;
+	width: 100%;
+	box-sizing: border-box;
+}
+
 #navbar-entries {
 	display: flex;
 	flex-direction: column;
@@ -491,6 +497,7 @@ body.popup-cards dialog > .card > .content {
 		min-width: 40vw;
 		height: 100vh;
 		z-index: 1000;
+		overflow-y: auto;
 	}
 
 	body.js-enabled #navbar.expanded {
