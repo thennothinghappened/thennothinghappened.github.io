@@ -78,6 +78,8 @@
 	--shadow-dist-card-title-x: 0.05em;
 	--shadow-dist-card-title-y: 0.05em;
 	--shadow-blur-card-title: 0.05em;
+
+	--invert-if-light-theme: invert();
 }
 
 body {
@@ -420,6 +422,14 @@ footer {
 
 #contact-methods .fa {
 	font-size: var(--font-h1-size);
+}
+
+#contact-methods img {
+	/* Ugly workaround for using FA icons only sometimes, should just use all SVGs. */
+	height: 1.37em;
+	aspect-ratio: 1;
+	filter: var(--invert-if-light-theme);
+	opacity: 0.6;
 }
 
 /*	  #endregion	  */

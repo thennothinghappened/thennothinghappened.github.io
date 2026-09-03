@@ -24,6 +24,7 @@
 
 	--colour-footer-font: var(--colour-text-main);
 	--colour-footer-background: var(--colour-card-light-background);
+	--invert-if-light-theme: none;
 
 	color-scheme: dark;
 }
