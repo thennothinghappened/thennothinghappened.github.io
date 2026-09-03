@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	usePopupCardsLabel.textContent = 'Display cards as pop-ups: ';
 	const usePopUpCardsInput = document.createElement('input');
 	usePopUpCardsInput.type = 'checkbox';
-	usePopUpCardsInput.checked = usePopupCards();
+	usePopUpCardsInput.checked = userWantsPopupCards();
 
 	usePopUpCardsInput.addEventListener('change', () =>
 		togglePopupCards(usePopUpCardsInput.checked, true)
@@ -57,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	footer.appendChild(settingsBody);
 
-	togglePopupCards(usePopupCards(), false);
+	if (pageAllowsPopupCards()) {
+		togglePopupCards(userWantsPopupCards(), false);
+	}
 
 	window.addEventListener('beforeunload', animatePageHide);
 	window.addEventListener('pageshow', animatePageShow);
@@ -98,12 +100,12 @@ function useCosmeticAnimations() {
 	return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-/**
- * Whether to show cards as pop-ups, or just display articles as-is.
- */
-function usePopupCards() {
-	return window.localStorage.usePopupCards !== 'false'
-		&& document.body.classList.contains('allow-popup-cards');
+function userWantsPopupCards() {
+	return window.localStorage.usePopupCards !== 'false';
+}
+
+function pageAllowsPopupCards() {
+	return document.body.classList.contains('allow-popup-cards');
 }
 
 /**
@@ -114,18 +116,20 @@ function usePopupCards() {
  * @param {boolean} updatePreference Whether to update the value of the preference.
  */
 function togglePopupCards(enabled, updatePreference) {
-	if (enabled) {
-		if (updatePreference) {
-			window.localStorage.usePopupCards = 'true';
-		}
+	if (updatePreference) {
+		window.localStorage.usePopupCards = enabled
+			? 'true'
+			: 'false';
+	}
 
+	if (!pageAllowsPopupCards()) {
+		return;
+	}
+
+	if (enabled) {
 		cardPopupManager.enable(main);
 		document.body.classList.add('popup-cards');
 	} else {
-		if (updatePreference) {
-			window.localStorage.usePopupCards = 'false';
-		}
-
 		cardPopupManager.disable();
 		document.body.classList.remove('popup-cards');
 	}
