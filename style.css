@@ -164,8 +164,24 @@ hr {
 }
 
 a {
-	text-decoration: none;
 	color: var(--colour-text-link);
+	text-decoration: none;
+}
+
+main a {
+	transition: var(--transition-link-hover);
+	transition-property: box-shadow;
+
+	box-shadow: 0 1px var(--colour-text-link);
+}
+
+main a:hover {
+	box-shadow: 0 0.1em var(--colour-text-link);
+}
+
+main a:has(.fa) {
+	box-shadow: none !important;
+	text-decoration: none !important;
 }
 
 .grid {
@@ -369,19 +385,6 @@ button.card {
 	font-weight: bold;
 }
 
-.card > .content a {
-
-	transition: var(--transition-link-hover);
-	transition-property: box-shadow;
-
-	box-shadow: 0 1px var(--colour-text-link);
-
-}
-
-.card > .content a:hover {
-	box-shadow: 0 0.1em var(--colour-text-link);
-}
-
 /*	  #endregion	  */
 
 /************************/
@@ -412,6 +415,7 @@ footer {
 	display: inline-flex;
 	align-items: center;
 	column-gap: var(--padding-footer-contact-icon);
+	text-decoration: none;
 }
 
 #contact-methods .fa {
